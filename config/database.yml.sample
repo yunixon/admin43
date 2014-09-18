@@ -2,8 +2,8 @@ local: &local
   adapter: postgresql
   encoding: unicode
   pool: 5
-  username: yunixon
-  password: ZXubiycaSP
+  username: action
+  password:
   host: localhost
 
 development:
