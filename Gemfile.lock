@@ -65,6 +65,7 @@ GEM
       sass (~> 3.2)
       thor
     builder (3.2.2)
+    cancancan (1.9.1)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -205,6 +206,7 @@ DEPENDENCIES
   activeadmin!
   autoprefixer-rails
   bootstrap-sass (~> 3.2.0)
+  cancancan
   carrierwave
   coffee-rails (~> 4.0.0)
   devise

@@ -28,6 +28,7 @@ gem 'spring',        group: :development
 
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
+gem 'cancancan'
 
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails' #for bootstrap-sass
