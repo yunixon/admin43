@@ -39,11 +39,26 @@ gem 'carrierwave'
 gem 'rmagick'
 
 group :prodaction do
+  gem 'puma'
+  gem 'heroku_rails_deflate' #speed_up
   gem 'rails_12factor'
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0'
+  gem 'rspec-rails'
+  gem 'database_cleaner'
+  gem 'better_errors'
+  #gem 'binding_of_caller'
+  gem 'pry'
+  gem 'pry-rails'
+  gem 'factory_girl_rails'
+  #gem 'quiet_assets'
+  gem 'ffaker'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'poltergeist'
 end
 
 # Use ActiveModel has_secure_password
@@ -51,7 +66,6 @@ end
 
 # Use unicorn as the app server
 # gem 'unicorn'
-gem 'puma'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
