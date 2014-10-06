@@ -26,11 +26,14 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
+gem 'devise'
+gem 'activeadmin', github: 'activeadmin'
+
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails' #for bootstrap-sass
 gem 'slim'
-gem 'slim_rails'
-gem 'simple_form'
+gem 'slim-rails'
+gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form', branch: 'master'
 gem 'carrierwave'
 gem 'rmagick'
 
