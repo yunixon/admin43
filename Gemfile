@@ -46,7 +46,6 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.1.0'
-  gem 'database_cleaner', '~> 1.2.0'
   gem 'better_errors'
   #gem 'binding_of_caller'
   gem 'pry'

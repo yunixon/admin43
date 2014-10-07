@@ -4,14 +4,12 @@ require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 
-#require 'simplecov'
-#SimpleCov.start 'rails'
+require 'simplecov'
+SimpleCov.start 'rails'
 
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
-
-#Capybara.javascript_driver = :poltergeist
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are

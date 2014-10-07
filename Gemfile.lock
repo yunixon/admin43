@@ -90,7 +90,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
-    database_cleaner (1.2.0)
     devise (3.4.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -276,7 +275,6 @@ DEPENDENCIES
   capybara
   carrierwave
   coffee-rails (~> 4.0.0)
-  database_cleaner (~> 1.2.0)
   devise
   factory_girl_rails
   ffaker

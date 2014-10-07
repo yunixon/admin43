@@ -14,7 +14,6 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-require 'database_cleaner'
 RSpec.configure do |config|
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
@@ -46,21 +45,6 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = :random
-
-  config.before(:suite) do
-    DatabaseCleaner[:active_record].strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
-  end
-
-  config.before(:each) do |example|
-    DatabaseCleaner.strategy = example.metadata[:type] == :feature ? :deletion : :transaction
-    DatabaseCleaner.start
-  end
-
-  config.after(:each) do
-    DatabaseCleaner.clean
-  end
-
   # Seed global randomization in this process using the `--seed` CLI option.
   # Setting this allows you to use `--seed` to deterministically reproduce
   # test failures related to randomization by passing the same `--seed` value
@@ -87,7 +71,7 @@ RSpec.configure do |config|
 
     # Prevents you from mocking or stubbing a method that does not exist on
     # a real object. This is generally recommended.
-    mocks.verify_partial_doubles = true
+    #mocks.verify_partial_doubles = true
   end
 #=end
 end
