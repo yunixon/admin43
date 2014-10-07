@@ -45,8 +45,8 @@ group :prodaction do
 end
 
 group :development, :test do
-  gem 'rspec-rails'
-  gem 'database_cleaner'
+  gem 'rspec-rails', '~> 3.1.0'
+  gem 'database_cleaner', '~> 1.2.0'
   gem 'better_errors'
   #gem 'binding_of_caller'
   gem 'pry'
@@ -57,6 +57,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'simplecov'
   gem 'capybara'
   gem 'poltergeist'
 end
