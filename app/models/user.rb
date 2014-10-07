@@ -8,5 +8,6 @@ class User < ActiveRecord::Base
 
   validates :role, :name, presence: true
   validates :name, length: {minimum: 3, maximum: 80}
+  validates :description, length: {maximum: 200}
 
 end
