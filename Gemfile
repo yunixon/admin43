@@ -45,7 +45,8 @@ group :prodaction do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.1.0'
+  gem 'rspec-rails', '~> 3.0.0'
+  gem 'shoulda-matchers'
   gem 'better_errors'
   #gem 'binding_of_caller'
   gem 'pry'
