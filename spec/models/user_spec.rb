@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe User do
+describe User, :type => :model do
  
   it "has a valid factory" do
     expect(FactoryGirl.build(:sysadmin)).to be_valid
