@@ -32,4 +32,6 @@ describe User, :type => :model do
     expect(user.errors[:role].size).to eq(1)
   end
 
+  it { is_expected.to have_many(:resumes) }
+
 end

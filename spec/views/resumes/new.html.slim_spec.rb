@@ -5,7 +5,7 @@ RSpec.describe "resumes/new", :type => :view do
     assign(:resume, Resume.new(
       :user_id => 1,
       :body => "MyText",
-      :status => 1
+      :status => 0
     ))
   end
 

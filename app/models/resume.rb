@@ -3,7 +3,7 @@ class Resume < ActiveRecord::Base
 
   belongs_to :user
   
-  validates :body, presence: true
+  validates :body, :status, presence: true
   validates :body, length: {minimum: 3, maximum: 400}
 
   validates_associated :user

@@ -5,7 +5,7 @@ RSpec.describe "resumes/show", :type => :view do
     @resume = assign(:resume, Resume.create!(
       :user_id => 1,
       :body => "MyText",
-      :status => 2
+      :status => 1
     ))
   end
 
@@ -13,6 +13,6 @@ RSpec.describe "resumes/show", :type => :view do
     render
     expect(rendered).to match(/1/)
     expect(rendered).to match(/MyText/)
-    expect(rendered).to match(/2/)
+    expect(rendered).to match(/1/)
   end
 end
