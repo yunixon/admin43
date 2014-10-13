@@ -1,0 +1,25 @@
+h1 Listing resumes
+
+table
+  thead
+    tr
+      th User
+      th Body
+      th Status
+      th
+      th
+      th
+
+  tbody
+    - @resumes.each do |resume|
+      tr
+        td = resume.user_id
+        td = resume.body
+        td = resume.status
+        td = link_to 'Show', resume
+        td = link_to 'Edit', edit_resume_path(resume)
+        td = link_to 'Destroy', resume, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Resume', new_resume_path

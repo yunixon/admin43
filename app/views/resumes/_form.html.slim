@@ -1,0 +1,10 @@
+= simple_form_for(@resume) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :user_id
+    = f.input :body
+    = f.input :status
+
+  .form-actions
+    = f.button :submit
