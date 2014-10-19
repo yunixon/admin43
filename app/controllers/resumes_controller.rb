@@ -1,2 +1,2 @@
-class ResumesController < InheritedResources::Base
+class ResumesController < ApplicationController
 end
