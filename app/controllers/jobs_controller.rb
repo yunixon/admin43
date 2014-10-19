@@ -1,6 +1,8 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
 
+  respond_to :html, :json
+
   def index
     @jobs = Job.all
     respond_with(@jobs)

@@ -1,6 +1,8 @@
 class ResumesController < ApplicationController
   before_action :set_resume, only: [:show, :edit, :update, :destroy]
 
+  respond_to :html, :json
+
   def index
     @resumes = Resume.all
     respond_with(@resumes)
