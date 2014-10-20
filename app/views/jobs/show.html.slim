@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Employer:
+  = @job.employer_id
+p
+  strong Name:
+  = @job.name
+p
+  strong Body:
+  = @job.body
+p
+  strong Status:
+  = @job.status
+
+= link_to 'Edit', edit_job_path(@job)
+'|
+= link_to 'Back', jobs_path
