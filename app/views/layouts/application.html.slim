@@ -8,6 +8,11 @@ html
   body
     = render 'layouts/navbar'
     .container
-      = flash_messages
+      = render 'layouts/messages'
+      .dropdown
+        a data-toggle="dropdown" href="#"  Dropdown trigger
+        ul.dropdown-menu aria-labelledby="dLabel" role="menu" 
+          li= 'sss'
+          li= 'aaa'
       = yield
 
