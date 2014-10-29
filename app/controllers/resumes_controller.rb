@@ -1,4 +1,5 @@
 class ResumesController < ApplicationController
+  load_and_authorize_resource param_method: :resume_params
   before_action :set_resume, only: [:show, :edit, :update, :destroy]
 
   respond_to :html, :json
