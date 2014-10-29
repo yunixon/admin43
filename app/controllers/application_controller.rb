@@ -10,9 +10,9 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:nick, :password) }
-    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:nick, :password) }
-    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:nick, :password, :current_password) }
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password) }
+    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:email, :password) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password, :current_password) }
   end
       
   def layout_by_resource
@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
       "application"
     end
   end
-
+      
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
   end

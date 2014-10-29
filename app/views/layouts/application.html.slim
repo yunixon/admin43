@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title Admin43
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application' => true
+    = csrf_meta_tags
+  body
+    = render 'layouts/navbar'
+    .container
+      = render 'layouts/messages'
+      .dropdown
+        a data-toggle="dropdown" href="#"  Dropdown trigger
+        ul.dropdown-menu aria-labelledby="dLabel" role="menu" 
+          li= 'sss'
+          li= 'aaa'
+      = yield
+

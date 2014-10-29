@@ -5,7 +5,7 @@ RSpec.describe "resumes/edit", :type => :view do
     @resume = assign(:resume, Resume.create!(
       :user_id => 1,
       :body => "MyText",
-      :status => 1
+      :status => 0
     ))
   end
 
