@@ -1,0 +1,14 @@
+h2
+  center
+    |Выслать письмо о подтверждении
+= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+  = f.error_notification
+  = f.full_error :confirmation_token
+  .form-inputs
+    = f.input :email, required: true, autofocus: true, label: 'Адрес электронной почты'
+  .form-actions
+    center
+      = f.button :submit, "Выслать"
+      p
+        |или
+        = render "devise/shared/links"
