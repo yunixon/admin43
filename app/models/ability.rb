@@ -6,11 +6,11 @@ class Ability
     #
     #user ||= User.new # guest user (not logged in)
     unless user.nil?
-      can :manage, :all if user.role.superadmin?
-      can :read,   :all
-      can :create, Resume if user.role.sysadmin?
+      can :manage, :all if user.superadmin?
+      can :read,   Resume
+      can :create, Resume if user.sysadmin?
     else
-      can :read, Resume 
+      can :read, Resume
     end
     #
     # The first argument to `can` is the action you are giving the user

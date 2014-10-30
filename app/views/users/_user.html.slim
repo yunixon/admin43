@@ -1,0 +1,12 @@
+tr
+  td
+    = user.name
+  td
+    = user.email
+  td
+    = user.role
+  - if user_signed_in? && current_user.superadmin?
+    td
+      = link_to "Редактировать", edit_user_path(user)
+    td
+      = link_to "Удалить", user_path(user), method: :delete, data: {confirm: 'Вы уверены?'}

@@ -1,0 +1,13 @@
+- provide(:title, 'Пользователи')
+
+h2
+  |Все пользователи:
+
+table.table.table-hover
+  thead
+    tr
+      th ФИО или Организация
+      th email
+      th Роль
+  tbody
+    = render @users

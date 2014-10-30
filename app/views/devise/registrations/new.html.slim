@@ -9,7 +9,7 @@ hr
     = f.input :email, required: true, label: 'Адрес электронной почты', placeholder: 'abc@gmail.com'
     = f.input :password, required: true, hint: ("#{@minimum_password_length} символов минимум" if @validatable), label: 'Пароль'
     = f.input :password_confirmation, required: true, label: 'Подтвердите пароль'
-    = f.collection_radio_buttons :role, [[0, 'Я системный администратор, ищу работу'] ,[1, 'Мне нужен системный администратор']], :first, :last, checked: 0
+    = f.collection_radio_buttons :role, [[:sysadmin, 'Я системный администратор, ищу работу'] ,[:employer, 'Мне нужен системный администратор']], :first, :last, checked: :sysadmin
   .form-actions
     center
       = f.button :submit, "Зарегистрироваться", class: 'btn btn-primary'
