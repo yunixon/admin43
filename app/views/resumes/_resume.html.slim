@@ -1,0 +1,11 @@
+tr
+  td
+    = resume.user.name
+  td
+    = resume.body
+  td
+    = resume.status
+  td
+    = link_to "Редактировать", edit_resume_path(resume)
+  td
+    = link_to "Удалить", resume_path(resume), method: :delete, data: {confirm: 'Вы уверены?'}

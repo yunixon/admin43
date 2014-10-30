@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {sessions: 'sessions', registrations: 'registrations'}
   scope "/admin" do
-    resources :users
+    resources :users do
+      resources :resumes
+    end
   end
   resources :resumes
   resources :jobs

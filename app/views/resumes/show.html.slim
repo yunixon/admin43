@@ -1,15 +1,16 @@
-p#notice = notice
-
 p
-  strong User:
-  = @resume.user_id
+  strong ФИО:
+  = @resume.user.name
 p
-  strong Body:
+  strong e-mail:
+  = @resume.user.email
+p
+  strong Резюме:
   = @resume.body
 p
-  strong Status:
+  strong Статус:
   = @resume.status
 
-= link_to 'Edit', edit_resume_path(@resume)
+= link_to 'Редактировать', edit_resume_path(@resume)
 '|
-= link_to 'Back', resumes_path
+= link_to 'Назад', resumes_path

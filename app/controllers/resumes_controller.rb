@@ -22,7 +22,7 @@ class ResumesController < ApplicationController
   end
 
   def create
-    @resume = Resume.new(resume_params)
+    @resume = Resume.new(resume_params.merge(status: :unpublished, user: current_user))
     @resume.save
     respond_with(@resume)
   end
@@ -43,6 +43,6 @@ class ResumesController < ApplicationController
     end
 
     def resume_params
-      params.require(:resume).permit(:employer_id, :name, :body, :status)
+      params.require(:resume).permit(:sysadmin_id, :name, :body, :status)
     end
 end
