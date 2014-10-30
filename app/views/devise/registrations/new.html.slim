@@ -1,10 +1,18 @@
-h2 Sign up
+h2
+  center
+    |Регистрация
+hr
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = f.error_notification
   .form-inputs
-    = f.input :email, required: true, autofocus: true
-    = f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable)
-    = f.input :password_confirmation, required: true
+    = f.input :name, required: true, autofocus: true, label: 'ФИО или название фирмы', placeholder: 'Иванов Иван Иваныч или ОАО Ростелеком'
+    = f.input :email, required: true, label: 'Адрес электронной почты', placeholder: 'abc@gmail.com'
+    = f.input :password, required: true, hint: ("#{@minimum_password_length} символов минимум" if @validatable), label: 'Пароль'
+    = f.input :password_confirmation, required: true, label: 'Подтвердите пароль'
+    = f.collection_radio_buttons :role, [[0, 'Я системный администратор, ищу работу'] ,[1, 'Мне нужен системный администратор']], :first, :last, checked: 0
   .form-actions
-    = f.button :submit, "Sign up", class: 'btn btn-primary'
-= render "devise/shared/links"
+    center
+      = f.button :submit, "Зарегистрироваться", class: 'btn btn-primary'
+      p
+        |или
+      = render "devise/shared/links"
