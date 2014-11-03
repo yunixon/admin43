@@ -34,6 +34,7 @@ gem 'slim-rails'
 gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form', branch: 'master'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'friendly_id'
 
 group :prodaction do
   gem 'puma'
