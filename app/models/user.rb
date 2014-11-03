@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
 
   has_many :resumes, dependent: :destroy
 
+  has_many :organized_events, class_name: "Event", foreign_key: "organizer_id"
+
   validates :role, :name, presence: true
   validates :name, length: {minimum: 3, maximum: 80}
   validates :description, length: {maximum: 200}
