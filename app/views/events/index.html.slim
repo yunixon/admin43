@@ -1,35 +1,19 @@
-h1 Listing events
+- provide(:title, 'События')
 
-table
+h2 События
+
+table.table.table-hover
   thead
     tr
-      th Title
-      th Start date
-      th End date
-      th Location
-      th Agenda
-      th Address
-      th Logo
-      th Organizer
-      th
-      th
-      th
-
+      th Название
+      th Дата начала
+      th Дата завершения
+      th Место проведения
+      th Повестка
+      th Адрес
+      th Логотип
+      th Организатор
   tbody
-    - @events.each do |event|
-      tr
-        td = event.title
-        td = event.start_date
-        td = event.end_date
-        td = event.location
-        td = event.agenda
-        td = event.address
-        td = event.logo
-        td = event.organizer_id
-        td = link_to 'Show', event
-        td = link_to 'Edit', edit_event_path(event)
-        td = link_to 'Destroy', event, data: {:confirm => 'Are you sure?'}, :method => :delete
+    = render @events
 
-br
-
-= link_to 'New Event', new_event_path
+= link_to 'Добавить событие', new_event_path, class: 'btn btn-primary'

@@ -2,14 +2,13 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :title
-    = f.input :start_date
-    = f.input :end_date
-    = f.input :location
-    = f.input :agenda
-    = f.input :address
-    = f.input :logo
-    = f.input :organizer_id
+    = f.input :title, label: 'Название', placeholder: "Ruby Meetup"
+    = f.input :start_date, label: 'Дата начала', placeholder: "12.02.15"
+    = f.input :end_date, label: 'Дата окончания', placeholder: "12.02.15"
+    = f.input :location, label: 'Место проведения', placeholder: "Коворкинг центр Вход"
+    = f.input :agenda, label: 'Повестка', placeholder: "Текст повестки события..."
+    = f.input :address, label: 'Адрес', placeholder: "Киров, Московская 12"
+    = f.input :logo, label: 'Логотип'
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, "Добавить", class: 'btn btn-primary'
