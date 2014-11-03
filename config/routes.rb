@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   scope "/admin" do
     resources :users do
       resources :resumes
+      resources :events
     end
   end
+  resources :events
   resources :resumes
   resources :jobs
   # The priority is based upon order of creation: first created -> highest priority.

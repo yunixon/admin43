@@ -1,5 +1,10 @@
 class EventsController < ApplicationController
+  load_and_authorize_resource param_method: :event_params
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:show, :index]
+  before_action :event_owner!, only: [:edit, :update, :destroy]
+
+  respond_to :html, :json
 
   def index
     @events = Event.all
@@ -19,7 +24,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
+    @event = current_user.organized_events.new(event_params)
     @event.save
     respond_with(@event)
   end
@@ -37,6 +42,13 @@ class EventsController < ApplicationController
   private
     def set_event
       @event = Event.find(params[:id])
+    end
+
+    def event_owner!
+      if @event.organizer_id != current_user.id
+        redirect_to events_path
+        flash[:notice] = 'Недостаточно прав на обработку данного события'
+      end
     end
 
     def event_params

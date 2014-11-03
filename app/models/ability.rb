@@ -8,9 +8,12 @@ class Ability
     unless user.nil?
       can :manage, :all if user.superadmin?
       can :read,   Resume
+      can :read,   Event
       can :create, Resume if user.sysadmin?
+      can :create, Event
     else
       can :read, Resume
+      can :read, Event
     end
     #
     # The first argument to `can` is the action you are giving the user
