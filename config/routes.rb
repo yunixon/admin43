@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :events
+
   devise_for :users, controllers: {sessions: 'sessions', registrations: 'registrations'}
   scope "/admin" do
     resources :users do
