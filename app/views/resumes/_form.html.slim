@@ -2,7 +2,8 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :body, label: 'Текст', placeholder: "текст резюме..."
+    = f.input :name, label: 'Должность', placeholder: 'Системный администратор Unix'
+    = f.input :body, label: 'Резюме', placeholder: 'текст резюме...'
 
   .form-actions
     = f.button :submit, "Добавить", class: 'btn btn-primary'

@@ -1,0 +1,10 @@
+p
+  strong ФИО:
+  = @user.name
+p
+  strong e-mail:
+  = @user.email
+
+= link_to 'Редактировать', edit_user_path(@user)
+'|
+= link_to 'Назад', users_path

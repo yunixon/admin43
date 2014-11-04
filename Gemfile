@@ -35,6 +35,7 @@ gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form', branch: 
 gem 'carrierwave'
 gem 'rmagick'
 gem 'friendly_id'
+gem 'babosa'
 
 group :prodaction do
   gem 'puma'

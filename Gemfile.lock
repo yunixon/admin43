@@ -39,6 +39,7 @@ GEM
     arel (5.0.1.20140414130214)
     autoprefixer-rails (3.1.2.20141016)
       execjs
+    babosa (0.3.11)
     bcrypt (3.1.9)
     better_errors (2.0.0)
       coderay (>= 1.0.0)
@@ -232,6 +233,7 @@ PLATFORMS
 
 DEPENDENCIES
   autoprefixer-rails
+  babosa
   better_errors
   bootstrap-sass (~> 3.2.0)
   cancancan
