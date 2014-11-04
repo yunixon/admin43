@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
   belongs_to :organizers, class_name: "User"
 
   def owner
-    User.find_by id: self.organizer_id
+    User.find_by id: organizer_id
   end
 
   def normalize_friendly_id(input)

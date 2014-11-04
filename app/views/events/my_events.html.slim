@@ -1,0 +1,19 @@
+- provide(:title, 'Мои события')
+
+h2 Мои события
+
+table.table.table-hover
+  thead
+    tr
+      th Название
+      th Дата начала
+      th Дата завершения
+      th Место проведения
+      th Повестка
+      th Адрес
+      th Логотип
+      th Организатор
+  tbody
+    = render @events
+
+= link_to 'Добавить событие', new_event_path, class: 'btn btn-primary'

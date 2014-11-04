@@ -7,10 +7,9 @@ class Ability
     #user ||= User.new # guest user (not logged in)
     unless user.nil?
       can :manage, :all if user.superadmin?
-      can :read,   Resume
-      can :read,   Event
-      can :create, Resume if user.sysadmin?
-      can :create, Event
+      can :manage, Resume, user_id: user.id if user.sysadmin?
+      can :read, Event
+      can :manage, Event, user_id: user.id
     else
       can :read, Resume
       can :read, Event

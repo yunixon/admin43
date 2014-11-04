@@ -39,6 +39,10 @@ class EventsController < ApplicationController
     respond_with(@event)
   end
 
+  def my_events
+    @events = current_user.organized_events
+  end
+
   private
     def set_event
       @event = Event.find(params[:id])
