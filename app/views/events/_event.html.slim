@@ -14,8 +14,11 @@ tr
   td
     = event.logo
   td
-    = event.organizer.email
-  td
-    = link_to "Редактировать", edit_resume_path(resume)
-  td
-    = link_to "Удалить", resume_path(resume), method: :delete, data: {confirm: 'Вы уверены?'}
+    = event.owner.email
+  - if user_signed_in? && current_user.superadmin?
+    td
+      = link_to "Смотреть", event_path(event)
+    td
+      = link_to "Редактировать", edit_event_path(event)
+    td
+      = link_to "Удалить", event_path(event), method: :delete, data: {confirm: 'Вы уверены?'}

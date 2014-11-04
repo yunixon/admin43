@@ -21,7 +21,7 @@ p
   = @event.logo
 p
   strong Организатор:
-  = @event.organizer.email
+  = image_tag avatar_url(@event.owner)
 
 = link_to 'Редактировать', edit_event_path(@event)
 '|
