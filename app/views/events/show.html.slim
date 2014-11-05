@@ -18,7 +18,7 @@ p
   = @event.address
 p
   strong Лого:
-  = @event.logo
+  = image_tag @event.logo.thumbnail.url
 p
   strong Организатор:
   = image_tag avatar_url(@event.owner)
