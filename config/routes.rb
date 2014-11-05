@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   resources :resumes
   resources :jobs
 
+  get :my_resumes, to: 'resumes#my_resumes', as: 'my_resumes'
   get :my_events, to: 'events#my_events', as: 'my_events'
+  get :my_jobs, to: 'jobs#my_jobs', as: 'my_jobs'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

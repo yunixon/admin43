@@ -1,0 +1,14 @@
+tr
+  td
+    = job.name
+  td
+    = job.body
+  td
+    = job.status
+  - if user_signed_in? && job.employer_id == current_user.id || current_user.superadmin?
+    td
+      = link_to "Смотреть", job_path(job)
+    td
+      = link_to "Редактировать", edit_job_path(job)
+    td
+      = link_to "Удалить", job_path(job), method: :delete, data: {confirm: 'Вы уверены?'}

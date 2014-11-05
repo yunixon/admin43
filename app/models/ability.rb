@@ -8,9 +8,11 @@ class Ability
     unless user.nil?
       can :manage, :all if user.superadmin?
       can :manage, Resume, user_id: user.id if user.sysadmin?
+      can :manage, Job, employer_id: user.id if user.employer?
       can :manage, Event, organizer_id: user.id
     else
       can :read, Event
+      can :read, Job
     end
     #
     # The first argument to `can` is the action you are giving the user

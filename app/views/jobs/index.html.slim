@@ -1,27 +1,14 @@
-h1 Listing jobs
+- provide(:title, 'Задания')
 
-table
+h2 Задания
+
+table.table.table-hover
   thead
     tr
-      th Employer
-      th Name
-      th Body
-      th Status
-      th
-      th
-      th
-
+      th Название
+      th Задание
+      th Статус
   tbody
-    - @jobs.each do |job|
-      tr
-        td = job.employer_id
-        td = job.name
-        td = job.body
-        td = job.status
-        td = link_to 'Show', job
-        td = link_to 'Edit', edit_job_path(job)
-        td = link_to 'Destroy', job, data: {:confirm => 'Are you sure?'}, :method => :delete
+    = render @jobs
 
-br
-
-= link_to 'New Job', new_job_path
+= link_to 'Добавить задание', new_job_path, class: 'btn btn-primary'

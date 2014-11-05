@@ -12,8 +12,8 @@ class User < ActiveRecord::Base
   enum role: {sysadmin: 0, employer: 1, superadmin: 2}
 
   has_many :resumes, dependent: :destroy
-
-  has_many :organized_events, class_name: "Event", foreign_key: "organizer_id"
+  has_many :jobs, class_name: "Job", foreign_key: "employer_id", dependent: :destroy
+  has_many :organized_events, class_name: "Event", foreign_key: "organizer_id", dependent: :destroy
 
   validates :role, :name, presence: true
   validates :name, length: {minimum: 3, maximum: 80}

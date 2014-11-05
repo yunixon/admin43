@@ -1,0 +1,14 @@
+- provide(:title, 'Мои задания')
+
+h2 Мои задания
+
+table.table.table-hover
+  thead
+    tr
+      th Название
+      th Задание
+      th Статус
+  tbody
+    = render @jobs
+
+= link_to 'Добавить задание', new_job_path, class: 'btn btn-primary'

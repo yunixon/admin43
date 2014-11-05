@@ -37,6 +37,10 @@ class ResumesController < ApplicationController
     respond_with(@resume)
   end
 
+  def my_resumes
+    @resumes = current_user.resumes
+  end
+
   private
     def set_resume
       @resume = Resume.find(params[:id])

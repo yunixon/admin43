@@ -1,18 +1,16 @@
-p#notice = notice
-
 p
-  strong Employer:
-  = @job.employer_id
+  strong Организатор:
+  = image_tag avatar_url(@job.owner)
 p
-  strong Name:
+  strong Название:
   = @job.name
 p
-  strong Body:
+  strong Текст задания:
   = @job.body
 p
-  strong Status:
+  strong Статус:
   = @job.status
 
-= link_to 'Edit', edit_job_path(@job)
+= link_to 'Редактировать', edit_job_path(@job)
 '|
-= link_to 'Back', jobs_path
+= link_to 'Назад', jobs_path

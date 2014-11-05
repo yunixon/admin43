@@ -2,10 +2,8 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :employer_id
-    = f.input :name
-    = f.input :body
-    = f.input :status
+    = f.input :name, label: 'Название', placeholder: "Настроить 1С"
+    = f.input :body, label: 'Текст задания', placeholder: "Настроить 1С..."
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, "Добавить", class: 'btn btn-primary'
