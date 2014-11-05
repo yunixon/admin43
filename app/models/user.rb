@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
 
   mount_uploader :photo, ImageUploader
 
+  paginates_per 10
+
   has_many :resumes, dependent: :destroy
   has_many :jobs, class_name: "Job", foreign_key: "employer_id", dependent: :destroy
   has_many :organized_events, class_name: "Event", foreign_key: "organizer_id", dependent: :destroy

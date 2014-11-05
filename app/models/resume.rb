@@ -6,6 +6,8 @@ class Resume < ActiveRecord::Base
 
   enum status: {unpublished: 0, published: 1}
 
+  paginates_per 10
+
   belongs_to :user
   
   validates :name, :body, :status, presence: true

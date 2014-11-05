@@ -6,6 +6,8 @@ class Job < ActiveRecord::Base
 
   enum status: {unpublished: 0, published: 1}
 
+  paginates_per 10
+
   belongs_to :employers, class_name: "User"
 
   def owner

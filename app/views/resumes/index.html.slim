@@ -13,3 +13,4 @@ table.table.table-hover
     = render @resumes
 
 = link_to 'Добавить резюме', new_resume_path, class: 'btn btn-primary'
+= paginate @resumes

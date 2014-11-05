@@ -1,0 +1,15 @@
+- provide(:title, 'Мои резюме')
+
+h2 Мои резюме
+
+table.table.table-hover
+  thead
+    tr
+      th ФИО или Организация
+      th Должность
+      th Текст резюме
+      th Статус
+  tbody
+    = render @resumes
+
+= link_to 'Добавить резюме', new_resume_path, class: 'btn btn-primary'

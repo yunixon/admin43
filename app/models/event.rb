@@ -9,6 +9,8 @@ class Event < ActiveRecord::Base
 
   mount_uploader :logo, ImageUploader
 
+  paginates_per 10
+
   def owner
     User.find_by id: organizer_id
   end

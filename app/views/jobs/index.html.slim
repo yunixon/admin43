@@ -12,3 +12,4 @@ table.table.table-hover
     = render @jobs
 
 = link_to 'Добавить задание', new_job_path, class: 'btn btn-primary'
+= paginate @jobs

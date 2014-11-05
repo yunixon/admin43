@@ -17,3 +17,4 @@ table.table.table-hover
     = render @events
 
 = link_to 'Добавить событие', new_event_path, class: 'btn btn-primary'
+= paginate @events

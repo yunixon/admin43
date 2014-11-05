@@ -7,7 +7,7 @@ class JobsController < ApplicationController
   respond_to :html, :json
 
   def index
-    @jobs = Job.all
+    @jobs = Job.order(:created_at).page(params[:page])
     respond_with(@jobs)
   end
 

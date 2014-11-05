@@ -9,6 +9,7 @@ class Ability
       can :manage, :all if user.superadmin?
       can :manage, User, id: user.id
       can :manage, Resume, user_id: user.id if user.sysadmin?
+      can :read, Job
       can :manage, Job, employer_id: user.id if user.employer?
       can :manage, Event, organizer_id: user.id
     else
