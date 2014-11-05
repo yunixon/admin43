@@ -37,6 +37,7 @@ gem 'rmagick'
 gem 'cloudinary'
 gem 'friendly_id'
 gem 'babosa'
+gem 'kaminari'
 
 group :prodaction do
   gem 'puma'
