@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   
   enum role: {sysadmin: 0, employer: 1, superadmin: 2}
 
+  mount_uploader :photo, ImageUploader
+
   has_many :resumes, dependent: :destroy
   has_many :jobs, class_name: "Job", foreign_key: "employer_id", dependent: :destroy
   has_many :organized_events, class_name: "Event", foreign_key: "organizer_id", dependent: :destroy

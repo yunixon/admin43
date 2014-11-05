@@ -6,7 +6,10 @@ p
 p
   strong e-mail:
   = @user.email
+p
+  strong Фото:
+  = image_tag @user.photo.thumbnail.url
 
-= link_to 'Редактировать', edit_user_path(@user)
+= link_to 'Редактировать', edit_user_registration_path
 '|
 = link_to 'Назад', users_path

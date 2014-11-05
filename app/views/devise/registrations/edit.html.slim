@@ -6,6 +6,7 @@ h2
   .form-inputs
     = f.input :name, required: true, autofocus: true, label: 'ФИО или название фирмы'
     = f.input :email, required: true, label: 'Адрес электронной почты'
+    = f.input :photo, label: 'Фото'
     - if devise_mapping.confirmable? && resource.pending_reconfirmation?
       p
         | Ожидает подтверждения: #{resource.unconfirmed_email}
