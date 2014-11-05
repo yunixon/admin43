@@ -12,6 +12,7 @@
 /db/*.sqlite3-journal
 /config/database.yml
 /config/cloudinary.yml
+/public/uploads/tmp
 /coverage
 
 # Ignore all logfiles and tempfiles.
