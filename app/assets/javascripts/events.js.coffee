@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready ->
-  $("#events").infinitescroll
+  $("#events .page").infinitescroll
     navSelector: "nav.pagination"
     nextSelector: "nav.pagination a[rel=next]"
     itemSelector: "#events tr.event"

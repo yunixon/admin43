@@ -2,7 +2,7 @@
 
 h2 События
 
-table.table.table-hover#events
+table#events.table.table-hover
   thead
     tr
       th Название
@@ -16,5 +16,5 @@ table.table.table-hover#events
   tbody.page
     = render @events
 
-= link_to 'Добавить событие', new_event_path, class: 'btn btn-primary'
 = paginate @events
+= link_to 'Добавить событие', new_event_path, class: 'btn btn-primary'
