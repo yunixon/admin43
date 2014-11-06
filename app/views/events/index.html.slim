@@ -2,7 +2,7 @@
 
 h2 События
 
-table.table.table-hover
+table.table.table-hover#events
   thead
     tr
       th Название
@@ -13,7 +13,7 @@ table.table.table-hover
       th Адрес
       th Логотип
       th Организатор
-  tbody
+  tbody.page
     = render @events
 
 = link_to 'Добавить событие', new_event_path, class: 'btn btn-primary'
