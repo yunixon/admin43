@@ -6,6 +6,8 @@ class Event < ActiveRecord::Base
   friendly_id :title, use: [:slugged, :finders]
 
   belongs_to :organizers, class_name: "User"
+  has_one :newsline, as: :element
+  has_one :newsline, through: :newsline_elements
 
   mount_uploader :logo, ImageUploader
 
