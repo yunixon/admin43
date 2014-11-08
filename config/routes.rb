@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :events
   resources :resumes
   resources :jobs
+  resources :newslines, only: [:index]
 
   get :my_resumes, to: 'resumes#my_resumes', as: 'my_resumes'
   get :my_events, to: 'events#my_events', as: 'my_events'
@@ -19,7 +20,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'events#index'
+  root 'newslines#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,0 +1,13 @@
+- provide(:title, 'Новости')
+
+h2 Новости
+
+table#newslines.table.table-hover
+  thead
+    tr
+      th
+      
+  tbody.page
+    = render @newslines
+
+= paginate @newslines

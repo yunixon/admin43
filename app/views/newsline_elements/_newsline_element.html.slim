@@ -1,0 +1,18 @@
+ul
+  - case newsline_element.element
+  - when Event
+    li= newsline_element.element.title
+    li= newsline_element.element.start_date
+    li= newsline_element.element.end_date
+    li= newsline_element.element.location
+    li= newsline_element.element.agenda
+    li= newsline_element.element.address
+    li= image_tag newsline_element.element.logo.thumbnail.url 
+    li= image_tag avatar_url(newsline_element.element.owner)
+  - when Job
+    li= newsline_element.element.name
+    li= image_tag avatar_url(newsline_element.element.owner)
+    li= newsline_element.element.body
+    li= newsline_element.element.status
+  - else
+    li= newsline_element.element.class

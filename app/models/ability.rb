@@ -12,9 +12,11 @@ class Ability
       can :read, Job
       can :manage, Job, employer_id: user.id if user.employer?
       can :manage, Event, organizer_id: user.id
+      can :read, Newsline
     else
       can :read, Event
       can :read, Job
+      can :read, Newsline
     end
     #
     # The first argument to `can` is the action you are giving the user
