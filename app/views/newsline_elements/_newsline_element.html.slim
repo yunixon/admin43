@@ -1,7 +1,7 @@
 ul
   - case newsline_element.element
   - when Event
-    li= newsline_element.element.title
+    li= link_to newsline_element.element.title, event_path(newsline_element.element)
     li= newsline_element.element.start_date
     li= newsline_element.element.end_date
     li= newsline_element.element.location
