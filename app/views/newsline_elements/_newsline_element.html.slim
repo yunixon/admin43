@@ -10,7 +10,7 @@ ul
     li= image_tag newsline_element.element.logo.thumbnail.url 
     li= image_tag avatar_url(newsline_element.element.owner)
   - when Job
-    li= newsline_element.element.name
+    li= link_to newsline_element.element.name, job_path(newsline_element.element)
     li= image_tag avatar_url(newsline_element.element.owner)
     li= newsline_element.element.body
     li= newsline_element.element.status

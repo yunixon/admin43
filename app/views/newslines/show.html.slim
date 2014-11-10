@@ -1,0 +1,15 @@
+- if user_signed_in? && current_user.superadmin?
+  = link_to 'Добавить элемент', add_newsline_element_path
+p
+  - @newsline.newsline_elements.each do |newselement|
+    - case newselement.element
+    - when Event
+      p= link_to newselement.element.title, event_path(newselement.element)
+      p= link_to 'Редактировать элемент', edit_event_path(newselement.element)
+    - when Job
+      p=link_to newselement.element.name, job_path(newselement.element)
+      p= link_to 'Редактировать элемент', edit_job_path(newselement.element) 
+    - else
+      |error class or Nil
+'|
+= link_to 'Назад', root_path
