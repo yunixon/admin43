@@ -9,8 +9,8 @@ class Job < ActiveRecord::Base
   paginates_per 10
 
   belongs_to :employers, class_name: "User"
-  has_one :newsline, as: :element
-  has_one :newsline, through: :newsline_elements
+  #has_one :newsline, as: :element
+  #has_one :newsline, through: :newsline_elements
 
   def owner
     User.find_by id: employer_id

@@ -10,19 +10,19 @@ Rails.application.routes.draw do
   resources :events
   resources :resumes
   resources :jobs
-  resources :newslines
+  #resources :newslines
 
   get :my_resumes, to: 'resumes#my_resumes', as: 'my_resumes'
   get :my_events, to: 'events#my_events', as: 'my_events'
   get :my_jobs, to: 'jobs#my_jobs', as: 'my_jobs'
   
-  get :add_newsline_element, to: 'newslines#add_newsline_element', as: 'add_newsline_element'
+  #get :add_newsline_element, to: 'newslines#add_newsline_element', as: 'add_newsline_element'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'newslines#index'
+  root 'pages#home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
