@@ -2,13 +2,13 @@
 
 h2 Задания
 
-table.table.table-hover
+table#jobs.table.table-hover
   thead
     tr
       th Название
       th Задание
       th Статус
-  tbody
+  tbody.page
     = render @jobs
 
 = link_to 'Добавить задание', new_job_path, class: 'btn btn-primary'
