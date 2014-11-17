@@ -6,4 +6,4 @@ $(document).ready ->
   $("#events .page").infinitescroll
     navSelector: "nav.pagination"
     nextSelector: "nav.pagination a[rel=next]"
-    itemSelector: "#events tr.element"
+    itemSelector: "#events .panel.panel-primary.element"

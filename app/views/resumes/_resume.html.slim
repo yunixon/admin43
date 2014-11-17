@@ -7,7 +7,7 @@ tr
     = resume.body
   td
     = resume.status
-  - if user_signed_in? && current_user.superadmin?
+  - if can? :update, resume
     td
       = link_to "Смотреть", resume_path(resume)
     td

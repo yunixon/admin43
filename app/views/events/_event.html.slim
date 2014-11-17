@@ -1,24 +1,25 @@
-tr.element
-  td
-    = event.title
-  td
+.panel.panel-primary.element
+  .panel-heading
+    h3.panel-title
+      = event.title
+  .panel-body
+    = image_tag event.owner.photo.mini_thumbnail.url unless event.owner.nil?
+    b Начало проведени:
     = event.start_date
-  td
+    br
+    b Конец:
     = event.end_date
-  td
+    br
+    b Место проведения:
     = event.location
-  td
+    br
+    b Повестка
     = event.agenda
-  td
+    br
+    b Адрес
     = event.address
-  td
-    = image_tag event.logo.mini_thumbnail.url
-  td
-    = event.owner.email unless event.owner.nil?
-  - if user_signed_in? && event.organizer_id == current_user.id || current_user.superadmin?
-    td
-      = link_to "Смотреть", event_path(event)
-    td
-      = link_to "Редактировать", edit_event_path(event)
-    td
+  .panel-footer
+    - if can? :update, event
+      = link_to "Смотреть", event_path(event), class: 'btn btn-primary'
+      = link_to "Редактировать", edit_event_path(event), class: 'btn btn-primary'
       = link_to "Удалить", event_path(event), method: :delete, data: {confirm: 'Вы уверены?'}

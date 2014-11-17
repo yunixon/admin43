@@ -1,14 +1,12 @@
-tr.element
-  td
-    = job.name
-  td
+.panel.panel-primary.element
+  .panel-heading
+    h3.panel-title
+      = job.name
+  .panel-body
     = job.body
-  td
+  .panel-footer
     = job.status
-  - if user_signed_in? && job.employer_id == current_user.id || current_user.superadmin?
-    td
-      = link_to "Смотреть", job_path(job)
-    td
-      = link_to "Редактировать", edit_job_path(job)
-    td
+    - if can? :update, job
+      = link_to "Смотреть", job_path(job), class: 'btn btn-primary'
+      = link_to "Редактировать", edit_job_path(job), class: 'btn btn-primary'
       = link_to "Удалить", job_path(job), method: :delete, data: {confirm: 'Вы уверены?'}

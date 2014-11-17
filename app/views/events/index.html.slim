@@ -2,18 +2,8 @@
 
 h2 События
 
-table#events.table.table-hover
-  thead
-    tr
-      th Название
-      th Дата начала
-      th Дата завершения
-      th Место проведения
-      th Повестка
-      th Адрес
-      th Логотип
-      th Организатор
-  tbody.page
+#events
+  .page
     = render @events
 
 = paginate @events

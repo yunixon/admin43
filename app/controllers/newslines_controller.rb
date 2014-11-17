@@ -21,7 +21,7 @@ class NewslinesController < ApplicationController
     end
     
     def newsline_params
-      params.require(:newsline).permit(:newsline_element_id, :element)
+      params.require(:newsline).permit(:element)
     end
 
 end

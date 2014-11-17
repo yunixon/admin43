@@ -1,4 +1,4 @@
-- if user_signed_in? && current_user.superadmin?
+- if can? :create, newsline
   = link_to 'Добавить элемент', add_newsline_element_path(newsline)
 = link_to "Смотреть", newsline_path(newsline)
 tr.newsline
