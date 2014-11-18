@@ -12,7 +12,7 @@
         = job.body
   .panel-footer
     = job.status
+    = link_to "Смотреть", job_path(job), class: 'btn btn-success'
     - if can? :update, job
-      = link_to "Смотреть", job_path(job), class: 'btn btn-primary'
-      = link_to "Редактировать", edit_job_path(job), class: 'btn btn-primary'
-      = link_to "Удалить", job_path(job), method: :delete, data: {confirm: 'Вы уверены?'}
+      = link_to "Редактировать", edit_job_path(job), class: 'btn btn-success'
+      = link_to "Удалить", job_path(job), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger'
