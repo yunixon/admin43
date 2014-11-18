@@ -13,6 +13,11 @@ class Event < ActiveRecord::Base
 
   paginates_per 10
 
+  validates :title, :start_date, :end_date, :location, :agenda, :address, presence: true
+  validates :title, :location, :address, length: {minimum: 3, maximum: 140}
+  validates :agenda, length: {minimum: 3, maximum: 2000}
+  validates_associated :organizers
+
   def owner
     User.find_by id: organizer_id
   end
