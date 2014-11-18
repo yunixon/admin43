@@ -8,10 +8,10 @@
 
 ['Вечеринка Ростелеком', 'Встреча рубистов', 'Встреча сисадминов', 'Учеба 1С', 'Учеба виртуализации', 'Учеба HyperV',
   'Microsoft Windows сертификация', 'Соревнование сисадминов', 'Выиграй книгу'].each do |title|
-  Event.find_or_create_by({title: title})
+  Event.find_or_create_by({title: title, organizer_id: 4})
 end
 
 ['Ростелеком работа', 'Работа', 'Работа для сисадминов', '1с работа', 'Подработка эникею', 'Настройка виртуализации',
   'Помощь в получении сертификата', 'Удаленная настройка сервера', 'Написание скрипта'].each do |name|
-  Job.find_or_create_by({name: name})
+  Job.find_or_create_by({name: name, employer_id: 3})
 end
