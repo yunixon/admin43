@@ -1,7 +1,7 @@
 .panel.panel-primary.element
   .panel-heading
     h3.panel-title
-      = event.title
+      = link_to event.title, event_path(event)
   .panel-body
     .row
       .col-md-2
@@ -31,7 +31,6 @@
         = event.agenda
   .panel-footer
     = link_to "Я пойду", '#', class: 'btn btn-primary'
-    = link_to "Смотреть", event_path(event), class: 'btn btn-success'
     - if can? :update, event
       = link_to "Редактировать", edit_event_path(event), class: 'btn btn-success'
       = link_to "Удалить", event_path(event), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger'

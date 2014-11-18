@@ -39,7 +39,8 @@ class EventsController < ApplicationController
   end
 
   def my_events
-    @events = current_user.organized_events
+    @events = current_user.organized_events.order(:created_at).page(params[:page])
+    respond_with(@events)
   end
 
   private

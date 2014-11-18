@@ -1,28 +1,37 @@
-p
-  strong Название:
-  = @event.title
-p
-  strong Дата начала:
-  = @event.start_date
-p
-  strong Дата завершения:
-  = @event.end_date
-p
-  strong Место проведения:
-  = @event.location
-p
-  strong Повестка:
-  = @event.agenda
-p
-  strong Адрес:
-  = @event.address
-p
-  strong Лого:
-  = image_tag @event.logo.thumbnail.url
-p
-  strong Организатор:
-  = image_tag avatar_url(@event.owner)
-
-= link_to 'Редактировать', edit_event_path(@event)
-'|
-= link_to 'Назад', events_path
+.panel.panel-primary.element
+  .panel-heading
+    h3.panel-title
+      = @event.title
+  .panel-body
+    .row
+      .col-md-2
+        = image_tag avatar_url(@event.owner), class: "img-circle img-thumbnail" unless @event.owner.nil?
+      .col-md-2
+        b= @event.owner.name unless @event.owner.nil?
+      .col-md-2
+        b Начало проведения:
+        br
+        = @event.start_date
+      .col-md-2
+        b Конец:
+        br
+        = @event.end_date     
+      .col-md-2
+        b Место проведения:
+        br
+        = @event.location      
+      .col-md-2
+        b Адрес:
+        br
+        = @event.address
+    .row
+      .col-md-12
+        b Повестка:
+        br
+        = @event.agenda
+  .panel-footer
+    = link_to "Я пойду", '#', class: 'btn btn-primary'
+    - if can? :update, @event
+      = link_to "Редактировать", edit_event_path(@event), class: 'btn btn-success'
+      = link_to "Удалить", event_path(@event), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger'
+= link_to 'Назад', events_path, class: 'btn btn-primary'

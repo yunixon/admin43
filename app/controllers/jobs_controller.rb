@@ -39,7 +39,8 @@ class JobsController < ApplicationController
   end
 
   def my_jobs
-    @jobs = current_user.jobs
+    @jobs = current_user.jobs.order(:created_at).page(params[:page])
+    respond_with(@jobs)
   end
 
   private

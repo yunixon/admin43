@@ -1,7 +1,7 @@
 .panel.panel-primary.element
   .panel-heading
     h3.panel-title
-      = job.name
+      = link_to job.name, job_path(job)
   .panel-body
     .row
       .col-md-2
@@ -12,7 +12,6 @@
         = job.body
   .panel-footer
     = job.status
-    = link_to "Смотреть", job_path(job), class: 'btn btn-success'
     - if can? :update, job
       = link_to "Редактировать", edit_job_path(job), class: 'btn btn-success'
       = link_to "Удалить", job_path(job), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger'

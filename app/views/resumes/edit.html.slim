@@ -1,8 +1,7 @@
 h1 Редактировать резюме
 
 == render 'form'
-
-= link_to 'Показать', @resume
-'|
-= link_to 'Назад', resumes_path
+br
+= link_to 'Отменить', @resume, class: 'btn btn-success'
+= link_to 'Назад', resumes_path, class: 'btn btn-primary'
 

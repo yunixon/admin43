@@ -1,8 +1,7 @@
 h1 Редактировать задание
 
 == render 'form'
-
-= link_to 'Смотреть', @job
-'|
-= link_to 'Назад', jobs_path
+br
+= link_to 'Отменить', @job, class: 'btn btn-success'
+= link_to 'Назад', jobs_path, class: 'btn btn-primary'
 

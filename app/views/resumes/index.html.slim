@@ -2,14 +2,8 @@
 
 h2 Резюме
 
-table.table.table-hover
-  thead
-    tr
-      th ФИО или Организация
-      th Должность
-      th Текст резюме
-      th Статус
-  tbody
+#resumes
+  .page
     = render @resumes
 
 = link_to 'Добавить резюме', new_resume_path, class: 'btn btn-primary'

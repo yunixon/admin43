@@ -38,7 +38,8 @@ class ResumesController < ApplicationController
   end
 
   def my_resumes
-    @resumes = current_user.resumes
+    @resumes = current_user.resumes.order(:created_at).page(params[:page])
+    respond_with(@resumes)
   end
 
   private

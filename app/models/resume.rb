@@ -12,7 +12,7 @@ class Resume < ActiveRecord::Base
   
   validates :name, :body, :status, presence: true
   validates :name, length: {minimum: 3, maximum: 100}
-  validates :body, length: {minimum: 3, maximum: 400}
+  validates :body, length: {minimum: 3, maximum: 4000}
 
   validates_associated :user
 

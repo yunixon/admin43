@@ -1,19 +1,18 @@
-p
-  strong ФИО:
-  = @resume.user.name
-p
-  strong e-mail:
-  = @resume.user.email
-p
-  strong Должность:
-  = @resume.name
-p
-  strong Резюме:
-  = @resume.body
-p
-  strong Статус:
-  = @resume.status
-
-= link_to 'Редактировать', edit_resume_path(@resume)
-'|
-= link_to 'Назад', resumes_path
+.panel.panel-primary.element
+  .panel-heading
+    h3.panel-title
+      = @resume.user.name + " - " + @resume.name
+  .panel-body
+    .row
+      .col-md-2
+        = image_tag avatar_url(@resume.user), class: "img-circle img-thumbnail"
+        br
+        = @resume.user.email
+      .col-md-10
+        = @resume.body
+  .panel-footer
+    = @resume.status
+    - if can? :update, @resume
+      = link_to "Редактировать", edit_resume_path(@resume), class: 'btn btn-success'
+      = link_to "Удалить", resume_path(@resume), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger'
+= link_to 'Назад', resumes_path, class: 'btn btn-primary'

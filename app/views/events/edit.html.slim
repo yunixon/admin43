@@ -1,8 +1,7 @@
 h1 Редактировать событие
 
 == render 'form'
-
-= link_to 'Смотреть', @event
-'|
-= link_to 'Назад', events_path
+br
+= link_to 'Смотреть', @event, class: 'btn btn-success'
+= link_to 'Назад', events_path, class: 'btn btn-primary'
 
