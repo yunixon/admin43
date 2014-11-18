@@ -3,7 +3,13 @@
     h3.panel-title
       = job.name
   .panel-body
-    = job.body
+    .row
+      .col-md-2
+        = image_tag avatar_url(job.owner), class: "img-circle img-thumbnail" unless job.owner.nil?
+        br
+        b= job.owner.name unless job.owner.nil?
+      .col-md-10
+        = job.body
   .panel-footer
     = job.status
     - if can? :update, job

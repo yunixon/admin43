@@ -3,22 +3,34 @@
     h3.panel-title
       = event.title
   .panel-body
-    = image_tag event.owner.photo.mini_thumbnail.url unless event.owner.nil?
-    b Начало проведени:
-    = event.start_date
-    br
-    b Конец:
-    = event.end_date
-    br
-    b Место проведения:
-    = event.location
-    br
-    b Повестка
-    = event.agenda
-    br
-    b Адрес
-    = event.address
+    .row
+      .col-md-2
+        = image_tag avatar_url(event.owner), class: "img-circle img-thumbnail" unless event.owner.nil?
+      .col-md-2
+        b= event.owner.name unless event.owner.nil?
+      .col-md-2
+        b Начало проведения:
+        br
+        = event.start_date
+      .col-md-2
+        b Конец:
+        br
+        = event.end_date     
+      .col-md-2
+        b Место проведения:
+        br
+        = event.location      
+      .col-md-2
+        b Адрес:
+        br
+        = event.address
+    .row
+      .col-md-12
+        b Повестка:
+        br
+        = event.agenda
   .panel-footer
+    = link_to "Я пойду", '#', class: 'btn btn-primary'
     - if can? :update, event
       = link_to "Смотреть", event_path(event), class: 'btn btn-primary'
       = link_to "Редактировать", edit_event_path(event), class: 'btn btn-primary'
