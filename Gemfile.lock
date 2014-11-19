@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/geekq/workflow.git
+  revision: 5c7267ce7002d8ba7efad3acee52d56cbf88e0e0
+  specs:
+    workflow (1.3.0)
+
+GIT
   remote: git://github.com/plataformatec/simple_form.git
   revision: 932619c180f90c5aebbb23f4d92fa254b430c775
   branch: master
@@ -280,3 +286,4 @@ DEPENDENCIES
   spring
   spring-commands-rspec
   uglifier (>= 1.3.0)
+  workflow!

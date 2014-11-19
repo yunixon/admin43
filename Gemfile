@@ -38,6 +38,7 @@ gem 'cloudinary'
 gem 'friendly_id'
 gem 'babosa'
 gem 'kaminari'
+gem 'workflow', :github => 'geekq/workflow'
 
 group :prodaction do
   gem 'puma'
