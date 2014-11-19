@@ -7,4 +7,8 @@ class Newsline < ActiveRecord::Base
   #has_many :events, through: :newsline_elements, source: :element, source_type: 'Event'
   #has_many :jobs, through: :newsline_elements, source: :element, source_type: 'Job'
 
+  validates :name, :body, presence: true
+  validates :name, length: {minimum: 3, maximum: 240}
+  validates :body, length: {minimum: 3, maximum: 4000}
+
 end
