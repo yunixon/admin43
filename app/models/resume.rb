@@ -11,9 +11,8 @@ class Resume < ActiveRecord::Base
   belongs_to :user
   
   validates :name, :body, :status, presence: true
-  validates :name, length: {minimum: 3, maximum: 100}
+  validates :name, length: {minimum: 3, maximum: 240}
   validates :body, length: {minimum: 3, maximum: 4000}
-
   validates_associated :user
 
   def normalize_friendly_id(input)

@@ -20,8 +20,8 @@ class User < ActiveRecord::Base
   has_many :organized_events, class_name: "Event", foreign_key: "organizer_id", dependent: :destroy
 
   validates :role, :name, presence: true
-  validates :name, length: {minimum: 3, maximum: 80}
-  validates :description, length: {maximum: 200}
+  validates :name, length: {minimum: 3, maximum: 120}
+  validates :description, length: {maximum: 2000}
 
   def normalize_friendly_id(input)
     input.to_s.to_slug.normalize(transliterations: :russian).to_s
