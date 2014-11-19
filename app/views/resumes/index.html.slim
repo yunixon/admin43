@@ -6,5 +6,7 @@ h2 Резюме
   .page
     = render @resumes
 
-= link_to 'Добавить резюме', new_resume_path, class: 'btn btn-primary'
+- if can? :create, Resume
+  = link_to 'Добавить резюме', new_resume_path, class: 'btn btn-primary'
+  
 = paginate @resumes

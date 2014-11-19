@@ -2,13 +2,11 @@
 
 h2 Новости
 
-table#newslines.table.table-hover
-  thead
-    tr
-      th
-        
-      
-  tbody.page
+#newslines
+  .page
     = render @newslines
+
+- if can? :create, Newsline
+  = link_to 'Добавить новость', new_newsline_path, class: 'btn btn-primary'
 
 = paginate @newslines

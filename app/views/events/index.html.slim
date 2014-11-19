@@ -6,5 +6,7 @@ h2 События
   .page
     = render @events
 
+- if can? :create, Event
+  = link_to 'Добавить событие', new_event_path, class: 'btn btn-primary'
+
 = paginate @events
-= link_to 'Добавить событие', new_event_path, class: 'btn btn-primary'

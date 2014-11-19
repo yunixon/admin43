@@ -1,7 +1,8 @@
 class NewslinesController < ApplicationController
   load_and_authorize_resource param_method: :newsline_params
+  before_action :set_newsline, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_newsline, only: [:show]
+  
 
   respond_to :html, :json
 
@@ -14,6 +15,30 @@ class NewslinesController < ApplicationController
     respond_with(@newsline)
   end
 
+  def new
+    @newsline = Newsline.new
+    respond_with(@newsline)
+  end
+
+  def edit
+  end
+
+  def create
+    @newsline = Newsline.new(newsline_params)
+    @newsline.save
+    respond_with(@newsline)
+  end
+
+  def update
+    @newsline.update(newsline_params)
+    respond_with(@newsline)
+  end
+
+  def destroy
+    @newsline.destroy
+    respond_with(@newsline)
+  end
+
   private
 
     def set_newsline
@@ -21,7 +46,7 @@ class NewslinesController < ApplicationController
     end
     
     def newsline_params
-      params.require(:newsline).permit(:element)
+      params.require(:newsline).permit(:name, :body, :status)
     end
 
 end

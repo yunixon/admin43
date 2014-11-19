@@ -18,6 +18,7 @@ nav.navbar.navbar-default role="navigation"
         li= link_to "О проекте", "#"
       ul.nav.navbar-nav.pull-right#login_menu
         li= link_to 'Пользователи', users_path if user_signed_in? && current_user.superadmin?
+        li= link_to 'Новости', newslines_path if user_signed_in? && current_user.superadmin?
         li= link_to 'Резюме', resumes_path if user_signed_in? && current_user.superadmin?
         li= link_to 'Задания', jobs_path if user_signed_in? && current_user.superadmin?
         li= link_to 'События', events_path if user_signed_in? && current_user.superadmin?

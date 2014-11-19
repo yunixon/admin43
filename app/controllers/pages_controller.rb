@@ -1,9 +1,9 @@
 class PagesController < ApplicationController
   
   def home
-    @events_and_jobs = Event.all + Job.all
-    @events_and_jobs.sort_by! { |ej| ej.created_at }.reverse!
-    @elements = Kaminari.paginate_array(@events_and_jobs).page(params[:page]).per(10)
+    @allelements = Newsline.all + Event.all + Job.all
+    @allelements.sort_by! { |ej| ej.created_at }.reverse!
+    @elements = Kaminari.paginate_array(@allelements).page(params[:page]).per(10)
   end
 
   def about

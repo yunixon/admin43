@@ -6,5 +6,7 @@ h2 Задания
   .page
     = render @jobs
 
-= link_to 'Добавить задание', new_job_path, class: 'btn btn-primary'
+- if can? :create, Job
+  = link_to 'Добавить задание', new_job_path, class: 'btn btn-primary'
+
 = paginate @jobs

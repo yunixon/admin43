@@ -1,6 +1,13 @@
-- if can? :create, newsline
-  = link_to 'Добавить элемент', add_newsline_element_path(newsline)
-= link_to "Смотреть", newsline_path(newsline)
-tr.newsline
-  td
-    = render newsline.newsline_elements
+.panel.panel-primary.element
+  .panel-heading
+    h3.panel-title
+      = link_to newsline.name, newsline_path(newsline)
+  .panel-body
+    .row
+      .col-md-12
+        = newsline.body
+  .panel-footer
+    = newsline.status
+    - if can? :update, newsline
+      = link_to "Редактировать", edit_newsline_path(newsline), class: 'btn btn-success'
+      = link_to "Удалить", newsline_path(newsline), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger'

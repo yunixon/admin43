@@ -5,12 +5,14 @@ Rails.application.routes.draw do
     resources :users do
       resources :resumes
       resources :events
+      resources :jobs
+      resources :newslines
     end
   end
   resources :events
   resources :resumes
   resources :jobs
-  #resources :newslines
+  resources :newslines
 
   get :my_resumes, to: 'resumes#my_resumes', as: 'my_resumes'
   get :my_events, to: 'events#my_events', as: 'my_events'

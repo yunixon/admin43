@@ -1,0 +1,9 @@
+= simple_form_for(@newsline) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name, label: 'Новость', placeholder: 'Вышел новый процессор'
+    = f.input :body, label: 'Содержание', placeholder: 'Текст новости...'
+
+  .form-actions
+    = f.button :submit, "Добавить", class: 'btn btn-primary'
