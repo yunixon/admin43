@@ -11,6 +11,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @attendees = EventAttendance.where(event_id: @event.id) 
     respond_with(@event)
   end
 
@@ -41,6 +42,14 @@ class EventsController < ApplicationController
   def my_events
     @events = current_user.organized_events.order(:created_at).page(params[:page])
     respond_with(@events)
+  end
+
+  def join
+    @attendance = EventAttendance.join_event(current_user.id, params[:event_id])
+    'Request Sent' if @attendance.save
+    respond_with @attendance do |format|
+      format.html { redirect_to event_path(params[:event_id]) }
+    end
   end
 
   private

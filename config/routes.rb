@@ -9,7 +9,9 @@ Rails.application.routes.draw do
       resources :newslines
     end
   end
-  resources :events
+  resources :events do
+    get :join, to: 'events#join', as: 'join'
+  end
   resources :resumes
   resources :jobs
   resources :newslines

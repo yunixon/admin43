@@ -29,8 +29,12 @@
         b Повестка:
         br
         = @event.agenda
+    .row
+      .col-md-12
+        - @attendees.each do |a|
+          = image_tag avatar_url(a.user), class: "img-circle img-thumbnail"
   .panel-footer
-    = link_to "Я пойду", '#', class: 'btn btn-primary'
+    = link_to "Я пойду", event_join_path(event_id: @event.id), class: 'btn btn-primary'
     - if can? :update, @event
       = link_to "Редактировать", edit_event_path(@event), class: 'btn btn-success'
       = link_to "Удалить", event_path(@event), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger'
