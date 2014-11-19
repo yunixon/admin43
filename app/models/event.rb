@@ -10,8 +10,9 @@ class Event < ActiveRecord::Base
   paginates_per 10
 
   belongs_to :organizer, class_name: "User"
-  #has_one :newsline, as: :element
-  #has_one :newsline, through: :newsline_elements
+
+  has_many :event_attendances
+  has_many :users, through: :event_attendances
 
   validates :title, :start_date, :end_date, :location, :agenda, :address, presence: true
   validates :title, :location, :address, length: {minimum: 3, maximum: 240}
