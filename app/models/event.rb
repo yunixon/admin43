@@ -6,6 +6,7 @@ class Event < ActiveRecord::Base
   friendly_id :title, use: [:slugged, :finders]
 
   before_create :set_status
+  before_update :set_status
 
   mount_uploader :logo, ImageUploader
 
@@ -55,7 +56,8 @@ class Event < ActiveRecord::Base
   private
 
   def set_status
-    self.status = 'new'
+    self.status = 'new' if self.status.nil?
+    self.status = 'new' if self.moderating?
   end
 
 end
