@@ -1,14 +1,8 @@
 Rails.application.routes.draw do
 
   devise_for :users, controllers: {sessions: 'sessions', registrations: 'registrations'}
-  scope "/admin" do
-    resources :users do
-      resources :resumes
-      resources :events
-      resources :jobs
-      resources :newslines
-    end
-  end
+  
+  resources :users
   resources :events do
     member do
       get 'join'
