@@ -45,11 +45,13 @@ class EventsController < ApplicationController
   end
 
   def join
-    @attendance = EventAttendance.join_event(current_user.id, params[:event_id])
-    'Request Sent' if @attendance.save
-    respond_with @attendance do |format|
-      format.html { redirect_to event_path(params[:event_id]) }
+    if @event.accepted?
+      @attendance = EventAttendance.join_event(current_user.id, params[:event_id])
+      flash[:success] = "Вы подтвердили участие" if @attendance.save
+    else
+      flash[:error] = "Событие еще не одобрено"
     end
+    redirect_to event_path
   end
 
   def to_moderate
