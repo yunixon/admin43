@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   respond_to :html, :json
 
   def index
-    @events = Event.order(:created_at).page(params[:page])
+    @events = Event.accepted.order(:created_at).page(params[:page])
     respond_with(@events)
   end
 
