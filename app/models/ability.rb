@@ -10,15 +10,16 @@ class Ability
       can :manage, User, id: user.id
       can :manage, Resume, user_id: user.id if user.sysadmin?
       can :read, Job
-      can :read, Event
+      can :read, Event, status: :accepted
       can :manage, Job, employer_id: user.id if user.employer?
       can :manage, Event, organizer_id: user.id
       can :read, Newsline
       #can :read, NewslineElement
     else
-      can :read, Event
+      can :read, Event, status: :accepted
       can :read, Job
       can :read, Newsline
+      can :read, User
       #can :read, NewslineElement
     end
     #
