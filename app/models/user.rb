@@ -19,8 +19,8 @@ class User < ActiveRecord::Base
   has_many :jobs, class_name: "Job", foreign_key: "employer_id", dependent: :destroy
   has_many :organized_events, class_name: "Event", foreign_key: "organizer_id", dependent: :destroy
 
-  has_many :event_attendances
-  has_many :events, through: :event_attendances
+  has_many :event_attendances, dependent: :destroy
+  has_many :events, through: :event_attendances, dependent: :destroy
 
 
   validates :role, :name, presence: true

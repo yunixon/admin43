@@ -14,8 +14,8 @@ class Event < ActiveRecord::Base
 
   belongs_to :organizer, class_name: "User"
 
-  has_many :event_attendances
-  has_many :users, through: :event_attendances
+  has_many :event_attendances, dependent: :destroy
+  has_many :users, through: :event_attendances, dependent: :destroy
 
   validates :title, :start_date, :end_date, :location, :agenda, :address, presence: true
   validates :title, :location, :address, length: {minimum: 3, maximum: 240}
