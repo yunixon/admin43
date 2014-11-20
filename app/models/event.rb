@@ -53,6 +53,10 @@ class Event < ActiveRecord::Base
     input.to_s.to_slug.normalize(transliterations: :russian).to_s
   end
 
+  def joined
+    self.event_attendances.count
+  end
+
   private
 
   def set_status
