@@ -34,7 +34,7 @@
         - @attendees.each do |a|
           = image_tag avatar_url(a.user), class: "img-circle img-thumbnail"
   .panel-footer
-    .label.label-default
+    div class=("label #{label_class_for(@event.status)}")
       = @event.status
     = link_to "Я пойду", join_event_path(event_id: @event.id), class: 'btn btn-primary'
     - if can? :update, @event
