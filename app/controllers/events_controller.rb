@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   load_and_authorize_resource param_method: :event_params
-  before_action :set_event, only: [:show, :edit, :update, :destroy, :to_moderate, :accept, :reject, :rewrite]
+  before_action :set_event, only: [:show, :edit, :update, :destroy,
+    :to_moderate, :accept, :reject, :rewrite]
   before_action :authenticate_user!, except: [:show, :index]
 
   respond_to :html, :json
@@ -45,13 +46,14 @@ class EventsController < ApplicationController
   end
 
   def join
+    @event = Event.friendly.find(params[:event_id])
     if @event.accepted?
       @attendance = EventAttendance.join_event(current_user.id, params[:event_id])
       flash[:success] = "Вы подтвердили участие" if @attendance.save
     else
       flash[:error] = "Событие еще не одобрено"
     end
-    redirect_to event_path
+    redirect_to event_path(params[:event_id])
   end
 
   def to_moderate

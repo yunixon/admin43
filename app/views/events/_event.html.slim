@@ -5,9 +5,9 @@
   .panel-body
     .row
       .col-md-2
-        = image_tag avatar_url(event.owner), class: "img-circle img-thumbnail" unless event.owner.nil?
+        = image_tag avatar_url(event.owner), alt: "#{event.owner.name}", title: "#{event.owner.name}", class: "img-circle img-thumbnail"
       .col-md-2
-        b= event.owner.name unless event.owner.nil?
+        b= event.owner.name
       .col-md-2
         b Начало проведения:
         br
@@ -32,7 +32,7 @@
   .panel-footer
     div class=("label #{label_class_for(event.status)}")
       = event.status
-    -#= link_to "Я пойду", join_event_path(event_id: event.id), class: 'btn btn-primary'
+    = link_to "Я пойду", join_events_path(event_id: event.id), class: 'btn btn-primary'
     = link_to 'Опубликовать', to_moderate_event_path(event), class: 'btn btn-success' if event.new?
     - if can? :update, event
       = link_to "Редактировать", edit_event_path(event), class: 'btn btn-success'

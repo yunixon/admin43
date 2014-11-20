@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   
   resources :users
   resources :events do
+    get 'join', on: :collection
     member do
-      get 'join'
       get 'to_moderate'
       get 'accept'
       get 'reject'
