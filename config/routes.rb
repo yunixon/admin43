@@ -10,7 +10,13 @@ Rails.application.routes.draw do
     end
   end
   resources :events do
-    get :join, to: 'events#join', as: 'join'
+    member do
+      get 'join'
+      get 'to_moderate'
+      get 'accept'
+      get 'reject'
+      get 'rewrite'
+    end
   end
   resources :resumes
   resources :jobs

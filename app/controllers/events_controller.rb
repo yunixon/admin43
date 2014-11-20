@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   load_and_authorize_resource param_method: :event_params
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :to_moderate, :accept, :reject, :rewrite]
   before_action :authenticate_user!, except: [:show, :index]
 
   respond_to :html, :json
@@ -52,12 +52,33 @@ class EventsController < ApplicationController
     end
   end
 
+  def to_moderate
+    @event.submit! if @event.new?
+    redirect_to event_path
+  end
+
+  def accept
+    @event.accept! if @event.moderating?
+    redirect_to event_path
+  end
+
+  def reject
+    @event.reject! if @event.moderating?
+    redirect_to event_path
+  end
+
+  def rewrite
+    @event.rewrite! if @event.rejected?
+    redirect_to event_path
+  end
+
   private
     def set_event
-      @event = Event.find(params[:id])
+      @event = Event.friendly.find(params[:id])
     end
 
     def event_params
-      params.require(:event).permit(:title, :start_date, :end_date, :location, :agenda, :address, :logo, :organizer_id)
+      params.require(:event).permit(:title, :start_date, :end_date, :location, :agenda,
+        :address, :logo, :organizer_id, :status)
     end
 end

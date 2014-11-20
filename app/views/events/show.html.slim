@@ -34,8 +34,15 @@
         - @attendees.each do |a|
           = image_tag avatar_url(a.user), class: "img-circle img-thumbnail"
   .panel-footer
-    = link_to "Я пойду", event_join_path(event_id: @event.id), class: 'btn btn-primary'
+    = @event.status
+    = link_to "Я пойду", join_event_path(event_id: @event.id), class: 'btn btn-primary'
     - if can? :update, @event
       = link_to "Редактировать", edit_event_path(@event), class: 'btn btn-success'
       = link_to "Удалить", event_path(@event), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger'
+      = link_to 'Опубликовать', to_moderate_event_path(@event), class: 'btn btn-success' if @event.new?
+      = link_to 'Переписать', rewrite_event_path(@event), class: 'btn btn-success' if @event.rejected?
+      - if current_user.superadmin?
+        = link_to 'Принять', accept_event_path(@event), class: 'btn btn-success' if @event.moderating?
+        = link_to 'Отклонить', reject_event_path(@event), class: 'btn btn-danger' if @event.moderating?
+
 = link_to 'Назад', events_path, class: 'btn btn-primary'
