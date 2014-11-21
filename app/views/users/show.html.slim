@@ -1,15 +1,26 @@
-p
-  = image_tag avatar_url(@user)
-p
-  strong ФИО:
-  = @user.name
-p
-  strong e-mail:
-  = @user.email
-p
-  strong Фото:
-  = image_tag @user.photo.thumbnail.url
+.panel.panel-primary.element
+  .panel-heading
+    h3.panel-title
+      = @user.name
+  .panel-body
+    .row
+      .col-md-2
+        = image_tag avatar_url(@user), alt: "#{@user.name}", title: "#{@user.name}", class: "img-circle img-thumbnail"
+        p
+          strong= @user.email
+      .col-md-4
+        strong Резюме:
+        br
+        - @user.resumes.each do |resume|
+          = link_to resume.name, resume_path(resume)
+          |(#{resume.status})
+          br
+      .col-md-4
+        strong Сертификаты:
+        -#= image_tag @user.photo.thumbnail.url
+  .panel-footer    
+    - if can? :update, @user
+      = link_to "Редактировать", edit_user_registration_path, class: 'btn btn-success'
+      = link_to "Добавить резюме", new_resume_path, class: 'btn btn-success'
 
-= link_to 'Редактировать', edit_user_registration_path
-'|
-= link_to 'Назад', users_path
+= link_to 'Назад', users_path, class: 'btn btn-primary'

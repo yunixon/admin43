@@ -1,7 +1,8 @@
 .panel.panel-primary.element
   .panel-heading
     h3.panel-title
-      = @resume.user.name + " - " + @resume.name
+      = link_to @resume.user.name, user_path(@resume.user)
+      |  :  #{@resume.name}
   .panel-body
     .row
       .col-md-2
@@ -11,7 +12,8 @@
       .col-md-10
         = @resume.body
   .panel-footer
-    = @resume.status
+    div class=("label #{label_class_for(@resume.status)}")
+      = @resume.status
     - if can? :update, @resume
       = link_to "Редактировать", edit_resume_path(@resume), class: 'btn btn-success'
       = link_to "Удалить", resume_path(@resume), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger'
