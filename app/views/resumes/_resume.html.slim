@@ -5,7 +5,7 @@
   .panel-body
     .row
       .col-md-2
-        = image_tag avatar_url(resume.user), class: "img-circle img-thumbnail"
+        = image_tag avatar_url(resume.user), alt: "#{resume.user.name}", title: "#{resume.user.name}", class: "img-circle img-thumbnail"
       .col-md-10
         = resume.body
   .panel-footer
