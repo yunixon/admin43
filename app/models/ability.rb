@@ -21,7 +21,6 @@ class Ability
       can :join, Event, status: 'accepted'
       can :read, Job
       can :read, Newsline
-      can :read, User
     end
     #
     # The first argument to `can` is the action you are giving the user
