@@ -60,8 +60,7 @@ class Event < ActiveRecord::Base
   private
 
   def set_status
-    self.status = 'new' if self.status.nil?
-    self.status = 'new' if self.moderating?
+    self.status = 'new'
   end
 
 end

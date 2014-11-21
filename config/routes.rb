@@ -12,7 +12,11 @@ Rails.application.routes.draw do
       get 'rewrite'
     end
   end
-  resources :resumes
+  resources :resumes do
+    member do
+      get 'publicate'
+    end
+  end
   resources :jobs
   resources :newslines
 

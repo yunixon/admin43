@@ -1,6 +1,6 @@
 class ResumesController < ApplicationController
   load_and_authorize_resource param_method: :resume_params
-  before_action :set_resume, only: [:show, :edit, :update, :destroy]
+  before_action :set_resume, only: [:show, :edit, :update, :destroy, :publicate]
   before_action :authenticate_user!
 
   respond_to :html, :json
@@ -41,6 +41,11 @@ class ResumesController < ApplicationController
   def my_resumes
     @resumes = current_user.resumes.order(:created_at).page(params[:page])
     respond_with(@resumes)
+  end
+
+  def publicate
+    @resume.publicate! if @resume.unpublished?
+    redirect_to resume_path
   end
 
   private

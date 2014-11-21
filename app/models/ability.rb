@@ -8,6 +8,7 @@ class Ability
     unless user.nil?
       can :manage,  :all    if user.superadmin?
       can :manage,  User,   id: user.id
+      can :read,    Resume, status: 'published'
       can :manage,  Resume, user_id: user.id if user.sysadmin?
       can :read,    Job
       can :manage,  Job,    employer_id: user.id if user.employer?

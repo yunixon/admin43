@@ -5,8 +5,7 @@ class Resume < ActiveRecord::Base
   friendly_id :name, use: [:slugged, :finders]
 
   before_create :set_status
-
-  enum status: {unpublished: 0, published: 1}
+  before_update :set_status
 
   paginates_per 10
 
@@ -17,7 +16,21 @@ class Resume < ActiveRecord::Base
   validates :body, length: {minimum: 3, maximum: 4000}
   validates_associated :user
 
-  scope :published, -> { where(status: 1) }
+  scope :published, -> { where(status: 'published') }
+  scope :unpublished, -> { where(status: 'unpublished') }
+
+  include Workflow
+
+  workflow_column :status
+
+  workflow do
+    state :unpublished do
+      event :publicate, transitions_to: :published
+    end
+    state :published do
+      event :rewrite, transitions_to: :unpublished
+    end
+  end
 
   def normalize_friendly_id(input)
     input.to_s.to_slug.normalize(transliterations: :russian).to_s
@@ -26,7 +39,7 @@ class Resume < ActiveRecord::Base
   private
 
   def set_status
-    self.status = 'unpublished' if self.status.nil?
+    self.status = 'unpublished'
   end
 
 end
