@@ -8,6 +8,13 @@
         = image_tag avatar_url(@user), alt: "#{@user.name}", title: "#{@user.name}", class: "img-circle img-thumbnail"
         p
           strong= @user.email
+      .col-md-4
+          strong События:
+          br
+          - @user.organized_events.each do |event|
+            = link_to event.title, event_path(event)
+            |(#{event.status})
+            br
       - if @user.sysadmin?
         .col-md-4
           strong Резюме:
@@ -21,13 +28,6 @@
           -#= image_tag @user.photo.thumbnail.url
       - else
         .col-md-4
-          strong События:
-          br
-          - @user.organized_events.each do |event|
-            = link_to event.title, event_path(event)
-            |(#{event.status})
-            br
-        .col-md-4
           strong Задания:
           br
           - @user.jobs.each do |job|
@@ -37,6 +37,7 @@
   .panel-footer    
     - if can? :update, @user
       = link_to "Редактировать", edit_user_registration_path, class: 'btn btn-success'
-      = link_to "Добавить резюме", new_resume_path, class: 'btn btn-success'
+      = link_to "Добавить резюме", new_resume_path, class: 'btn btn-success' if @user.sysadmin?
+      = link_to "Добавить задание", new_job_path, class: 'btn btn-success' if @user.employer?
 
 = link_to 'Назад', users_path, class: 'btn btn-primary'
