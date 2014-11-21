@@ -1,11 +1,12 @@
 class ResumesController < ApplicationController
   load_and_authorize_resource param_method: :resume_params
   before_action :set_resume, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   respond_to :html, :json
 
   def index
-    @resumes = Resume.order(:created_at).page(params[:page])
+    @resumes = Resume.published.order(:created_at).page(params[:page])
     respond_with(@resumes)
   end
 
