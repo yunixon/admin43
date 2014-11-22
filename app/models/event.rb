@@ -22,7 +22,7 @@ class Event < ActiveRecord::Base
   validates :agenda, length: {minimum: 3, maximum: 4000}
   validates_associated :organizer
 
-  scope :pending, -> { where(status: 'moderating') }
+  scope :moderating, -> { where(status: 'moderating') }
   scope :accepted, -> { where(status: 'accepted') }
   scope :rejected, -> { where(status: 'rejected') }
 

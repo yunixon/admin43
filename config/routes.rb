@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users
   resources :events do
     get 'join', on: :collection
+    get 'moderating', on: :collection
     member do
       get 'to_moderate'
       get 'accept'

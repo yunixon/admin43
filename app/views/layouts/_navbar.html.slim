@@ -21,6 +21,6 @@ nav.navbar.navbar-default role="navigation"
         li= link_to 'Новости', newslines_path if user_signed_in? && current_user.superadmin?
         li= link_to 'Резюме', resumes_path if user_signed_in? && current_user.superadmin?
         li= link_to 'Задания', jobs_path if user_signed_in? && current_user.superadmin?
-        li= link_to 'События', events_path if user_signed_in? && current_user.superadmin?
+        li= link_to "События(#{@events.count})", moderating_events_path if user_signed_in? && current_user.superadmin?
         = render 'devise/menu/registration_items'
         = render 'devise/menu/login_items'

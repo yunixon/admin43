@@ -14,6 +14,7 @@ class Ability
       can :manage,  Job,    employer_id: user.id if user.employer?
       can :read,    Event,  status: 'accepted'
       can :join,    Event,  status: 'accepted'
+      can :moderating, Event, status: 'modearting'
       can :manage,  Event,  organizer_id: user.id
       can :read,    Newsline
     else

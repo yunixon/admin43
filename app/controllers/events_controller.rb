@@ -56,6 +56,13 @@ class EventsController < ApplicationController
     redirect_to event_path(params[:event_id])
   end
 
+  def moderating
+    @events = Event.moderating.order(:created_at).page(params[:page])
+    respond_with(@events) do |format|
+      format.html { render :index }
+    end
+  end
+
   def to_moderate
     @event.submit! if @event.new?
     redirect_to event_path
