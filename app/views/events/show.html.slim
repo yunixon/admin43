@@ -46,4 +46,4 @@
         = link_to 'Принять', accept_event_path(@event), class: 'btn btn-success' if @event.moderating?
         = link_to 'Отклонить', reject_event_path(@event), class: 'btn btn-danger' if @event.moderating?
 
-= link_to 'Назад', events_path, class: 'btn btn-primary'
+= link_to 'Назад', :back, class: 'btn btn-primary'

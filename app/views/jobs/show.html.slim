@@ -22,4 +22,4 @@
           = link_to 'Принять', accept_job_path(@job), class: 'btn btn-success' if @job.moderating?
           = link_to 'Отклонить', reject_job_path(@job), class: 'btn btn-danger' if @job.moderating?
 
-= link_to 'Назад', jobs_path, class: 'btn btn-primary'
+= link_to 'Назад', :back, class: 'btn btn-primary'
