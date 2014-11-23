@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   get :my_resumes, to: 'resumes#my_resumes', as: 'my_resumes'
   get :my_events, to: 'events#my_events', as: 'my_events'
   get :my_jobs, to: 'jobs#my_jobs', as: 'my_jobs'
+  get :about, to: 'pages#about', as: 'about'
   
   #get :add_newsline_element, to: 'newslines#add_newsline_element', as: 'add_newsline_element'
 
