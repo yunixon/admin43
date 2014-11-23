@@ -1,12 +1,13 @@
 class JobsController < ApplicationController
   load_and_authorize_resource param_method: :job_params
-  before_action :set_job, only: [:show, :edit, :update, :destroy]
+  before_action :set_job, only: [:show, :edit, :update, :destroy,
+    :to_moderate, :accept, :reject, :rewrite, :complete]
   before_action :authenticate_user!, except: [:show, :index]
 
   respond_to :html, :json
 
   def index
-    @jobs = Job.order(:created_at).page(params[:page])
+    @jobs = Job.accepted.order(:created_at).page(params[:page])
     respond_with(@jobs)
   end
 
@@ -41,6 +42,38 @@ class JobsController < ApplicationController
   def my_jobs
     @jobs = current_user.jobs.order(:created_at).page(params[:page])
     respond_with(@jobs)
+  end
+
+  def moderating
+    @jobs = Job.moderating.order(:created_at).page(params[:page])
+    respond_with(@jobs) do |format|
+      format.html { render :index }
+    end
+  end
+
+  def to_moderate
+    @job.submit! if @job.new?
+    redirect_to job_path
+  end
+
+  def accept
+    @job.accept! if @job.moderating?
+    redirect_to job_path
+  end
+
+  def reject
+    @job.reject! if @job.moderating?
+    redirect_to job_path
+  end
+
+  def rewrite
+    @job.rewrite! if @job.rejected?
+    redirect_to job_path
+  end
+
+  def complete
+    @job.complete! if @job.accepted?
+    redirect_to job_path
   end
 
   private

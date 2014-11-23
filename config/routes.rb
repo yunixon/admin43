@@ -18,7 +18,16 @@ Rails.application.routes.draw do
       get 'publicate'
     end
   end
-  resources :jobs
+  resources :jobs do
+    get 'moderating', on: :collection
+    member do
+      get 'to_moderate'
+      get 'accept'
+      get 'reject'
+      get 'rewrite'
+      get 'complete'
+    end
+  end
   resources :newslines do
     member do
       get 'publicate'

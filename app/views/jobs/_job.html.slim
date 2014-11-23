@@ -5,13 +5,19 @@
   .panel-body
     .row
       .col-md-2
-        = image_tag avatar_url(job.owner), class: "img-circle img-thumbnail" unless job.owner.nil?
+        = image_tag avatar_url(job.owner), class: "img-circle img-thumbnail"
         br
-        b= job.owner.name unless job.owner.nil?
+        b= job.owner.name
       .col-md-10
         = job.body
   .panel-footer
-    = job.status
+    div class=("label #{label_class_for(job.status)}")
+      = job.status
     - if can? :update, job
       = link_to "Редактировать", edit_job_path(job), class: 'btn btn-success'
+      = link_to 'Опубликовать', to_moderate_job_path(job), class: 'btn btn-success' if job.new?
+      = link_to 'Выполнено', complete_job_path(job), class: 'btn btn-success' if job.accepted?
       = link_to "Удалить", job_path(job), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger'
+      - if current_user.superadmin?
+          = link_to 'Принять', accept_job_path(job), class: 'btn btn-success' if job.moderating?
+          = link_to 'Отклонить', reject_job_path(job), class: 'btn btn-danger' if job.moderating?

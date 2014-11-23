@@ -34,9 +34,9 @@
       = event.status
     = link_to "Я пойду", join_events_path(event_id: event.id), class: 'btn btn-primary'
     = link_to " Присоединилось (" + event.joined.to_s + ")", event_path(event)
-    = link_to 'Опубликовать', to_moderate_event_path(event), class: 'btn btn-success' if event.new?
     - if can? :update, event
       = link_to "Редактировать", edit_event_path(event), class: 'btn btn-success'
+      = link_to 'Опубликовать', to_moderate_event_path(event), class: 'btn btn-success' if event.new?
       = link_to "Удалить", event_path(event), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger'
       - if current_user.superadmin?
           = link_to 'Принять', accept_event_path(event), class: 'btn btn-success' if event.moderating?

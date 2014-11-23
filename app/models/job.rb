@@ -4,18 +4,43 @@ class Job < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
 
-  enum status: {unpublished: 0, published: 1}
+  before_create :set_status
+  before_update :set_status
 
   paginates_per 10
 
   belongs_to :employer, class_name: "User"
-  #has_one :newsline, as: :element
-  #has_one :newsline, through: :newsline_elements
 
   validates :name, :body, presence: true
   validates :name, length: {minimum: 3, maximum: 240}
   validates :body, length: {minimum: 3, maximum: 4000}
   validates_associated :employer
+
+  scope :moderating, -> { where(status: 'moderating') }
+  scope :accepted,   -> { where(status: 'accepted') }
+  scope :rejected,   -> { where(status: 'rejected') }
+  scope :completed,  -> { where(status: 'complete') }
+
+  include Workflow
+
+  workflow_column :status
+
+  workflow do
+    state :new do
+      event :submit, transitions_to: :moderating
+    end
+    state :moderating do
+      event :accept, transitions_to: :accepted
+      event :reject, transitions_to: :rejected
+    end
+    state :accepted do
+      event :complete, transitions_to: :completed
+    end
+    state :rejected do
+      event :rewrite, transitions_to: :new
+    end
+    state :completed
+  end
 
   def owner
     User.find_by id: employer_id
@@ -23,6 +48,12 @@ class Job < ActiveRecord::Base
 
   def normalize_friendly_id(input)
     input.to_s.to_slug.normalize(transliterations: :russian).to_s
+  end
+
+  private
+
+  def set_status
+    self.status = 'new'
   end
   
 end

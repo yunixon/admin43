@@ -17,7 +17,8 @@ module ApplicationHelper
       :accepted => 'label-success',
       :rejected => 'label-danger',
       :unpublished => 'label-default',
-      :published => 'label-success'
+      :published => 'label-success',
+      :completed => 'label-default'
     }[status.to_sym] || status.to_s
   end
 
