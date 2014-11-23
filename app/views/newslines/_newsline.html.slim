@@ -7,7 +7,8 @@
       .col-md-12
         = newsline.body
   .panel-footer
-    = newsline.status
+    div class=("label #{label_class_for(newsline.status)}")
+      = newsline.status
     - if can? :update, newsline
       = link_to "Редактировать", edit_newsline_path(newsline), class: 'btn btn-success'
       = link_to "Удалить", newsline_path(newsline), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger'

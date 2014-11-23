@@ -16,12 +16,12 @@ class Ability
       can :join,    Event,  status: 'accepted'
       can :moderating, Event, status: 'modearting'
       can :manage,  Event,  organizer_id: user.id
-      can :read,    Newsline
+      can :read,    Newsline, status: 'published'
     else
       can :read, Event, status: 'accepted'
       can :join, Event, status: 'accepted'
       can :read, Job
-      can :read, Newsline
+      can :read, Newsline, status: 'published'
     end
     #
     # The first argument to `can` is the action you are giving the user

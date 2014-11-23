@@ -4,7 +4,8 @@ class Newsline < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
 
-  enum status: {unpublished: 0, published: 1}
+  before_create :set_status
+  before_update :set_status
 
   paginates_per 10
 
@@ -35,6 +36,12 @@ class Newsline < ActiveRecord::Base
 
   def normalize_friendly_id(input)
     input.to_s.to_slug.normalize(transliterations: :russian).to_s
+  end
+
+  private
+
+  def set_status
+    self.status = 'unpublished'
   end
 
 end

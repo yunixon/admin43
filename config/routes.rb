@@ -19,7 +19,11 @@ Rails.application.routes.draw do
     end
   end
   resources :jobs
-  resources :newslines
+  resources :newslines do
+    member do
+      get 'publicate'
+    end
+  end
 
   get :my_resumes, to: 'resumes#my_resumes', as: 'my_resumes'
   get :my_events, to: 'events#my_events', as: 'my_events'

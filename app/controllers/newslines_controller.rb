@@ -1,13 +1,13 @@
 class NewslinesController < ApplicationController
   load_and_authorize_resource param_method: :newsline_params
-  before_action :set_newsline, only: [:show, :edit, :update, :destroy]
+  before_action :set_newsline, only: [:show, :edit, :update, :destroy, :publicate]
   before_action :authenticate_user!, except: [:index, :show]
   
 
   respond_to :html, :json
 
   def index
-    @newslines = Newsline.order(:created_at).page(params[:page])
+    @newslines = Newsline.published.order(:created_at).page(params[:page])
     respond_with(@newslines)
   end
 
@@ -37,6 +37,11 @@ class NewslinesController < ApplicationController
   def destroy
     @newsline.destroy
     respond_with(@newsline)
+  end
+
+  def publicate
+    @newsline.publicate! if @newsline.unpublished?
+    redirect_to newsline_path
   end
 
   private
