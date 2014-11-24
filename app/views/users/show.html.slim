@@ -38,6 +38,7 @@
     - if can? :update, @user
       = link_to "Редактировать", edit_user_registration_path, class: 'btn btn-success'
       = link_to "Добавить резюме", new_resume_path, class: 'btn btn-success' if @user.sysadmin?
+      = link_to 'Добавить событие', new_event_path, class: 'btn btn-success'
       = link_to "Добавить задание", new_job_path, class: 'btn btn-success' if @user.employer?
 
 = link_to 'Назад', :back, class: 'btn btn-primary'
