@@ -14,6 +14,7 @@
 /config/cloudinary.yml
 /public/uploads/tmp
 /coverage
+.env
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
