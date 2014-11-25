@@ -39,6 +39,9 @@ gem 'friendly_id'
 gem 'babosa'
 gem 'kaminari'
 gem 'workflow', :github => 'geekq/workflow'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-linkedin'
 
 group :prodaction do
   gem 'puma'
