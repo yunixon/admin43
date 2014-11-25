@@ -5,9 +5,9 @@
   .panel-body
     .row
       .col-md-2
-        = image_tag avatar_url(event.owner), alt: "#{event.owner.name}", title: "#{event.owner.name}", class: "img-circle img-thumbnail"
-      .col-md-2
-        b= event.owner.name
+        center
+          = image_tag avatar_url(event.owner), alt: "#{event.owner.name}", title: "#{event.owner.name}", class: "img-circle img-thumbnail"
+          b= event.owner.name
       .col-md-2
         b Начало проведения:
         br
@@ -26,6 +26,7 @@
         = event.address
     .row
       .col-md-12
+        br
         b Повестка:
         br
         = event.agenda

@@ -5,9 +5,10 @@
   .panel-body
     .row
       .col-md-2
-        = image_tag avatar_url(@job.owner), class: "img-circle img-thumbnail" unless @job.owner.nil?
-        br
-        b= @job.owner.name unless @job.owner.nil?
+        center
+          = image_tag avatar_url(@job.owner), class: "img-circle img-thumbnail"
+          br
+          b= @job.owner.name
       .col-md-10
         = @job.body
   .panel-footer
