@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users, controllers: {sessions: 'sessions', registrations: 'registrations'}
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
   
   resources :users
   resources :events do
@@ -39,6 +39,8 @@ Rails.application.routes.draw do
   get :my_jobs, to: 'jobs#my_jobs', as: 'my_jobs'
   get :about, to: 'pages#about', as: 'about'
   
+  match '/users/:id/finish_signup', to: 'users#finish_signup', via: [:get, :patch], as: :finish_signup
+
   #get :add_newsline_element, to: 'newslines#add_newsline_element', as: 'add_newsline_element'
 
   # The priority is based upon order of creation: first created -> highest priority.
