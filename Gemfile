@@ -63,6 +63,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   #gem 'quiet_assets'
   gem 'ffaker'
+  gem 'dotenv-rails'
 end
 
 group :test do
