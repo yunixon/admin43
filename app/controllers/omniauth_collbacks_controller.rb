@@ -8,6 +8,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
           sign_in_and_redirect @user, event: :authentication
           set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
         else
+          logger.debug "!!!!!!!!!!!!!!!!!!!!! -----------------  Пользователь не найден"
           session["devise.#{provider}_data"] = env["omniauth.auth"]
           redirect_to new_user_registration_url
         end
@@ -15,7 +16,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     }
   end
 
-  [:twitter, :facebook, :linked_in].each do |provider|
+  [:twitter, :facebook, :linkedin].each do |provider|
     provides_callback_for provider
   end
 

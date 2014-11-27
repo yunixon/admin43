@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   load_and_authorize_resource  param_method: :user_params
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :finish_signup]
+  before_filter :ensure_signup_complete, only: [:new, :create, :update, :destroy]
   before_action :authenticate_user!
     
   def index
@@ -7,7 +9,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.friendly.find(params[:id])
+  end
+
+  def edit
   end
 
   def destroy
@@ -42,6 +46,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = User.friendly.find(params[:id])
+  end
 
   def user_params
     accessible = [:name, :email, :photo, :description]
