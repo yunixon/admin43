@@ -26,8 +26,8 @@ class User < ActiveRecord::Base
   has_many :events, through: :event_attendances, dependent: :destroy
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
-  validates :role, :name, presence: true
-  validates :name, length: {minimum: 3, maximum: 120}
+  validates :role, presence: true
+  #validates :name, length: {minimum: 3, maximum: 120}
   validates :description, length: {maximum: 2000}
 
   def normalize_friendly_id(input)
@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
           password: Devise.friendly_token[0,20],
           role: :sysadmin
         )
-        user.skip_confirmation!
+        user.skip_confirmation! if user.respond_to?(:skip_confirmation)
         user.save!
       end
     end

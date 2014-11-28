@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   def finish_signup
     if request.patch? && params[:user] #&& params[:user][:email]
       if @user.update(user_params)
-        @user.skip_reconfirmation!
+        @user.skip_reconfirmation! if @user.respond_to?(:skip_confirmation)
         sign_in(@user, bypass: true)
         redirect_to @user, notice: 'Профиль успешно обновлен'
       else
