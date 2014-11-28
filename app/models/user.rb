@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
   
   enum role: {sysadmin: 0, employer: 1, superadmin: 2}
@@ -54,8 +54,7 @@ class User < ActiveRecord::Base
       # user to verify it on the next step via UsersController.finish_signup
       email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email)
       email = auth.info.email if email_is_verified
-      user = User.where(:email => email).first if email
-
+      user = User.where(email: email).first if email
       # Create the user if it's a new registration
       if user.nil?
         user = User.new(

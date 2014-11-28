@@ -8,7 +8,7 @@ h2
     = f.input :email, required: true, autofocus: true, label: 'Адрес электронной почты'
   .form-actions
     center
-      = f.button :submit, "Выслать"
+      = f.button :submit, "Выслать", class: 'btn btn-primary'
       p
         |или
-        = render "devise/shared/links"
+      = render "devise/shared/links"
