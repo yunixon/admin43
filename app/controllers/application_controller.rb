@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation, :name, :role) }
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:email, :password) }
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password, :current_password,
-      :name, :photo, :description) }
+      :name, :photo, :description, :role) }
   end
       
   def layout_by_resource
@@ -33,8 +33,8 @@ class ApplicationController < ActionController::Base
     return if action_name == 'finish_signup'
 
     # Redirect to the 'finish_signup' page if the user
-    # email hasn't been verified yet
-    if current_user && !current_user.email_verified?
+    # email hasn't been verified yet or user role unsetuped
+    if current_user && (!current_user.email_verified? || current_user.unsetuped?)
       redirect_to finish_signup_path(current_user)
     end
   end

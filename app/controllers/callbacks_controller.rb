@@ -20,7 +20,7 @@ class CallbacksController < Devise::OmniauthCallbacksController
   end
 
   def after_sign_in_path_for(resource)
-    if resource.email_verified?
+    if resource.email_verified? && !resource.unsetuped?
       super resource
     else
       finish_signup_path(resource)

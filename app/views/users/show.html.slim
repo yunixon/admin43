@@ -9,6 +9,8 @@
           = image_tag avatar_url(@user), alt: "#{@user.name}", title: "#{@user.name}", class: "img-circle img-thumbnail"
           p
             strong= @user.email
+          - @user.identities.each do |i|
+            br= i.provider
       .col-md-10
         strong О себе:
         br
@@ -36,11 +38,11 @@
         .panel-heading
           h3.panel-title
             |Мои резюме
-      .panel-body
-        - @user.resumes.each do |resume|
-          = link_to resume.name, resume_path(resume)
-          |(#{resume.status})
-          br
+        .panel-body
+          - @user.resumes.each do |resume|
+            = link_to resume.name, resume_path(resume)
+            |(#{resume.status})
+            br
   - else
     .col-md-6
       .panel.panel-primary.element
