@@ -9,8 +9,8 @@
           = image_tag avatar_url(@user), alt: "#{@user.name}", title: "#{@user.name}", class: "img-circle img-thumbnail"
           p
             strong= @user.email
-          -#- @user.identities.each do |i|
-          -#  br= i.provider
+          //- @user.identities.each do |i|
+          //  br= i.provider
       .col-md-10
         strong О себе:
         br
