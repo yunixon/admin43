@@ -9,15 +9,15 @@
           = image_tag avatar_url(@user), alt: "#{@user.name}", title: "#{@user.name}", class: "img-circle img-thumbnail"
           p
             strong= @user.email
-          - @user.identities.each do |i|
-            br= i.provider
+          -#- @user.identities.each do |i|
+          -#  br= i.provider
       .col-md-10
         strong О себе:
         br
         = @user.description
   .panel-footer    
     - if can? :update, @user
-      = link_to "Редактировать", edit_user_registration_path, class: 'btn btn-success'
+      = link_to "Редактировать", edit_user_path(@user), class: 'btn btn-success'
       = link_to "Добавить резюме", new_resume_path, class: 'btn btn-success' if @user.sysadmin?
       = link_to 'Добавить событие', new_event_path, class: 'btn btn-success'
       = link_to "Добавить задание", new_job_path, class: 'btn btn-success' if @user.employer?
