@@ -42,6 +42,7 @@ gem 'workflow', :github => 'geekq/workflow'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-linkedin'
+gem 'font-awesome-rails'
 
 group :prodaction do
   gem 'puma'
