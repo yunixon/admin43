@@ -1,4 +1,4 @@
-require "babosa"
+require 'babosa'
 require 'carrierwave/orm/activerecord'
 
 class Event < ActiveRecord::Base
@@ -12,14 +12,14 @@ class Event < ActiveRecord::Base
 
   paginates_per 10
 
-  belongs_to :organizer, class_name: "User"
+  belongs_to :organizer, class_name: 'User'
 
   has_many :event_attendances, dependent: :destroy
   has_many :users, through: :event_attendances, dependent: :destroy
 
   validates :title, :start_date, :end_date, :location, :agenda, :address, presence: true
-  validates :title, :location, :address, length: {minimum: 3, maximum: 240}
-  validates :agenda, length: {minimum: 3, maximum: 4000}
+  validates :title, :location, :address, length: { minimum: 3, maximum: 240 }
+  validates :agenda, length: { minimum: 3, maximum: 4000 }
   validates_associated :organizer
 
   scope :moderating, -> { where(status: 'moderating') }
@@ -44,7 +44,6 @@ class Event < ActiveRecord::Base
     end
   end
 
-
   def owner
     User.find_by id: organizer_id
   end
@@ -54,7 +53,7 @@ class Event < ActiveRecord::Base
   end
 
   def joined
-    self.event_attendances.count
+    event_attendances.count
   end
 
   private
@@ -62,5 +61,4 @@ class Event < ActiveRecord::Base
   def set_status
     self.status = 'new'
   end
-
 end

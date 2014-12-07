@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   load_and_authorize_resource param_method: :event_params
   before_action :set_event, only: [:show, :edit, :update, :destroy,
-    :to_moderate, :accept, :reject, :rewrite]
+                                   :to_moderate, :accept, :reject, :rewrite]
   before_action :authenticate_user!, except: [:show, :index]
 
   respond_to :html, :json
@@ -12,7 +12,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @attendees = EventAttendance.where(event_id: @event.id) 
+    @attendees = EventAttendance.where(event_id: @event.id)
     respond_with(@event)
   end
 
@@ -49,9 +49,9 @@ class EventsController < ApplicationController
     @event = Event.friendly.find(params[:event_id])
     if @event.accepted?
       @attendance = EventAttendance.join_event(current_user.id, params[:event_id])
-      flash[:success] = "Вы подтвердили участие" if @attendance.save
+      flash[:success] = 'Вы подтвердили участие' if @attendance.save
     else
-      flash[:error] = "Событие еще не одобрено"
+      flash[:error] = 'Событие еще не одобрено'
     end
     redirect_to event_path(params[:event_id])
   end
@@ -84,12 +84,13 @@ class EventsController < ApplicationController
   end
 
   private
-    def set_event
-      @event = Event.friendly.find(params[:id])
-    end
 
-    def event_params
-      params.require(:event).permit(:title, :start_date, :end_date, :location, :agenda,
-        :address, :logo, :organizer_id, :status)
-    end
+  def set_event
+    @event = Event.friendly.find(params[:id])
+  end
+
+  def event_params
+    params.require(:event).permit(:title, :start_date, :end_date, :location, :agenda,
+                                  :address, :logo, :organizer_id, :status)
+  end
 end

@@ -23,11 +23,11 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'devise'
-#gem 'activeadmin', github: 'activeadmin'
+# gem 'activeadmin', github: 'activeadmin'
 gem 'cancancan'
 
 gem 'bootstrap-sass', '~> 3.2.0'
-gem 'autoprefixer-rails' #for bootstrap-sass
+gem 'autoprefixer-rails' # for bootstrap-sass
 gem 'slim'
 gem 'slim-rails'
 gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form', branch: 'master'
@@ -37,7 +37,7 @@ gem 'cloudinary'
 gem 'friendly_id'
 gem 'babosa'
 gem 'kaminari'
-gem 'workflow', :github => 'geekq/workflow'
+gem 'workflow', github: 'geekq/workflow'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-linkedin'
@@ -45,7 +45,7 @@ gem 'font-awesome-rails'
 
 group :prodaction do
   gem 'puma'
-  gem 'heroku_rails_deflate' #speed_up
+  gem 'heroku_rails_deflate' # speed_up
   gem 'rails_12factor'
 end
 
@@ -56,13 +56,13 @@ group :development do
   gem 'rubocop', require: false
 end
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0' 
+  gem 'rspec-rails', '~> 3.0.0'
   gem 'better_errors'
-  #gem 'binding_of_caller'
+  # gem 'binding_of_caller'
   gem 'pry'
   gem 'pry-rails'
   gem 'factory_girl_rails'
-  #gem 'quiet_assets'
+  # gem 'quiet_assets'
   gem 'ffaker'
   gem 'dotenv-rails'
 end
@@ -86,4 +86,3 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-

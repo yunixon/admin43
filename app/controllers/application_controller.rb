@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   layout :layout_by_resource
-  
+
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   protected
@@ -12,20 +12,22 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation, :name, :role) }
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:email, :password) }
-    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password, :current_password,
-      :name, :photo, :description, :role) }
-  end
-      
-  def layout_by_resource
-    if devise_controller?
-      "login"
-    else
-      "application"
+    devise_parameter_sanitizer.for(:account_update) do |u|
+      u.permit(:email, :password, :current_password,
+               :name, :photo, :description, :role)
     end
   end
-      
+
+  def layout_by_resource
+    if devise_controller?
+      'login'
+    else
+      'application'
+    end
+  end
+
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, :alert => exception.message
+    redirect_to root_url, alert: exception.message
   end
 
   def ensure_signup_complete
@@ -38,5 +40,4 @@ class ApplicationController < ActionController::Base
       redirect_to finish_signup_path(current_user)
     end
   end
-
 end

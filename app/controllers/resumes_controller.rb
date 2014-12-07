@@ -49,11 +49,12 @@ class ResumesController < ApplicationController
   end
 
   private
-    def set_resume
-      @resume = Resume.friendly.find(params[:id])
-    end
 
-    def resume_params
-      params.require(:resume).permit(:user_id, :name, :body, :status)
-    end
+  def set_resume
+    @resume = Resume.friendly.find(params[:id])
+  end
+
+  def resume_params
+    params.require(:resume).permit(:user_id, :name, :body, :status)
+  end
 end

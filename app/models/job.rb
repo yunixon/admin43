@@ -1,4 +1,4 @@
-require "babosa"
+require 'babosa'
 
 class Job < ActiveRecord::Base
   extend FriendlyId
@@ -9,11 +9,11 @@ class Job < ActiveRecord::Base
 
   paginates_per 10
 
-  belongs_to :employer, class_name: "User"
+  belongs_to :employer, class_name: 'User'
 
   validates :name, :body, presence: true
-  validates :name, length: {minimum: 3, maximum: 240}
-  validates :body, length: {minimum: 3, maximum: 4000}
+  validates :name, length: { minimum: 3, maximum: 240 }
+  validates :body, length: { minimum: 3, maximum: 4000 }
   validates_associated :employer
 
   scope :moderating, -> { where(status: 'moderating') }
@@ -55,5 +55,4 @@ class Job < ActiveRecord::Base
   def set_status
     self.status = 'new'
   end
-  
 end

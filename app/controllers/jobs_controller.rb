@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
   load_and_authorize_resource param_method: :job_params
   before_action :set_job, only: [:show, :edit, :update, :destroy,
-    :to_moderate, :accept, :reject, :rewrite, :complete]
+                                 :to_moderate, :accept, :reject, :rewrite, :complete]
   before_action :authenticate_user!, except: [:show, :index]
 
   respond_to :html, :json
@@ -77,11 +77,12 @@ class JobsController < ApplicationController
   end
 
   private
-    def set_job
-      @job = Job.find(params[:id])
-    end
 
-    def job_params
-      params.require(:job).permit(:employer_id, :name, :body, :status)
-    end
+  def set_job
+    @job = Job.find(params[:id])
+  end
+
+  def job_params
+    params.require(:job).permit(:employer_id, :name, :body, :status)
+  end
 end

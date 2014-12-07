@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  devise_for :users, :controllers => { omniauth_callbacks: 'callbacks' }
-  
+  devise_for :users, controllers: { omniauth_callbacks: 'callbacks' }
+
   resources :users
   resources :events do
     get 'join', on: :collection
@@ -38,10 +38,10 @@ Rails.application.routes.draw do
   get :my_events, to: 'events#my_events', as: 'my_events'
   get :my_jobs, to: 'jobs#my_jobs', as: 'my_jobs'
   get :about, to: 'pages#about', as: 'about'
-  
+
   match '/users/:id/finish_signup', to: 'users#finish_signup', via: [:get, :patch], as: :finish_signup
 
-  #get :add_newsline_element, to: 'newslines#add_newsline_element', as: 'add_newsline_element'
+  # get :add_newsline_element, to: 'newslines#add_newsline_element', as: 'add_newsline_element'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

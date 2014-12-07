@@ -3,8 +3,8 @@
 FactoryGirl.define do
   factory :job do
     employer_id 1
-    name "MyString"
-    body "MyText"
+    name 'MyString'
+    body 'MyText'
     status 1
   end
 end

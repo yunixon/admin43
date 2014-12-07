@@ -1,4 +1,4 @@
-require "babosa"
+require 'babosa'
 
 class Resume < ActiveRecord::Base
   extend FriendlyId
@@ -10,10 +10,10 @@ class Resume < ActiveRecord::Base
   paginates_per 10
 
   belongs_to :user
-  
+
   validates :name, :body, :status, presence: true
-  validates :name, length: {minimum: 3, maximum: 240}
-  validates :body, length: {minimum: 3, maximum: 4000}
+  validates :name, length: { minimum: 3, maximum: 240 }
+  validates :body, length: { minimum: 3, maximum: 4000 }
   validates_associated :user
 
   scope :published, -> { where(status: 'published') }
@@ -41,5 +41,4 @@ class Resume < ActiveRecord::Base
   def set_status
     self.status = 'unpublished'
   end
-
 end

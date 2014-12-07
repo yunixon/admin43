@@ -17,12 +17,11 @@ class NewslineElementsController < ApplicationController
 
   private
 
-    def set_newsline_element
-      @newsline_element = NewslineElement.find(params[:id])
-    end
-    
-    def newsline_element_params
-      params.require(:newsline_element).permit(:element_id, :element_type, :newsline_id)
-    end
+  def set_newsline_element
+    @newsline_element = NewslineElement.find(params[:id])
+  end
 
+  def newsline_element_params
+    params.require(:newsline_element).permit(:element_id, :element_type, :newsline_id)
+  end
 end

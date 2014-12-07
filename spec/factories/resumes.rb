@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :resume, class: Resume do
     user_id 1
-    body "MyText"
-    status {:published}
+    body 'MyText'
+    status { :published }
   end
 end
