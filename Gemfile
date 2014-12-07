@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
 # Use postgresql as the database for Active Record
@@ -54,6 +53,7 @@ end
 group :development do
   gem 'spring'
   gem 'spring-commands-rspec'
+  gem 'rubocop', require: false
 end
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0' 
