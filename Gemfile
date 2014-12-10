@@ -54,6 +54,7 @@ group :development do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'rubocop', require: false
+  gem 'byebug'
 end
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
