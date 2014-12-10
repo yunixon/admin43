@@ -57,23 +57,21 @@ group :development do
   gem 'byebug'
 end
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0'
+  gem 'rspec-rails', '~> 3.1.0'
+  gem 'factory_girl_rails', '~> 4.4.1'
   gem 'better_errors'
-  # gem 'binding_of_caller'
   gem 'pry'
   gem 'pry-rails'
-  gem 'factory_girl_rails'
-  # gem 'quiet_assets'
-  gem 'ffaker'
   gem 'dotenv-rails'
 end
 
 group :test do
-  gem 'database_cleaner'
-  gem 'shoulda-matchers', require: false
+  gem 'faker', '~> 1.4.3'
+  gem 'database_cleaner', '~> 1.3.0'
+  gem 'launchy', '~> 2.4.2'
   gem 'simplecov'
-  gem 'capybara'
-  gem 'poltergeist'
+  gem 'capybara', '~> 2.4.3'
+  gem 'selenium-webdriver', '~> 2.43.0'
 end
 
 # Use ActiveModel has_secure_password
