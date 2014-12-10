@@ -72,6 +72,7 @@ group :test do
   gem 'simplecov'
   gem 'capybara', '~> 2.4.3'
   gem 'selenium-webdriver', '~> 2.43.0'
+  gem 'shoulda-matchers', '~> 2.6.2'
 end
 
 # Use ActiveModel has_secure_password
