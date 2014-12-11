@@ -1,37 +1,19 @@
 require 'rails_helper'
 
-describe User, type: :model do
+describe User do
 
   it 'has a valid factory' do
-    expect(FactoryGirl.build(:sysadmin)).to be_valid
+    expect(build(:user)).to be_valid
   end
 
-  it 'has a valid factory' do
-    expect(FactoryGirl.build(:employer)).to be_valid
-  end
-
-  it 'has a valid factory' do
-    expect(FactoryGirl.build(:superadmin)).to be_valid
-  end
-
-  it 'is invalid without a name' do
-    user = User.new(name: nil)
-    expect(user.valid?).to be_falsey
-    expect(user.errors[:name].size).to eq(2)
-  end
-
-  it 'is invalid with too short a name'  do
-    user = User.new(name: 'To')
-    expect(user).to_not be_valid
-    expect(user.errors[:name].size).to eq(1)
-  end
-
-  it 'is invalid without a role' do
-    user = User.new(role: nil)
-    expect(user.valid?).to be_falsey
-    expect(user.errors[:role].size).to eq(1)
-  end
-
-  it { is_expected.to have_many(:resumes) }
+  it { expect validate_presence_of :role }
+  it { expect ensure_length_of(:description).is_at_most(4000) }
+  
+  it { expect have_many(:resumes) }
+  it { expect have_many(:jobs).class_name('Job').with_foreign_key('employer_id') }
+  it { expect have_many(:organized_events).class_name('Event').with_foreign_key('organizer_id') }
+  it { expect have_many(:event_attendances) }
+  it { expect have_many(:events).through(:event_attendances) }
+  it { expect have_many(:identities) }
 
 end

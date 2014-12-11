@@ -1,6 +1,7 @@
 FactoryGirl.define do
+
   factory :identity do
-    user nil
+    association :user, factory: :user
     provider 'MyString'
     uid 'MyString'
   end

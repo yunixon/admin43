@@ -1,29 +1,20 @@
 require 'rails_helper'
 
-RSpec.describe Resume, type: :model do
+describe Resume do
 
   it 'has a valid factory' do
-    expect(FactoryGirl.build(:resume)).to be_valid
+    expect(build(:resume)).to be_valid
   end
 
-  it 'is invalid without a body' do
-    resume = Resume.new(body: nil)
-    expect(resume.valid?).to be_falsey
-    expect(resume.errors[:body].size).to eq(2)
-  end
+  it { expect validate_presence_of :name }
+  it { expect validate_presence_of :body }
+  it { expect validate_presence_of :status }
 
-  it 'is invalid with too short a body'  do
-    resume = Resume.new(body: 'To')
-    expect(resume).to_not be_valid
-    expect(resume.errors[:body].size).to eq(1)
-  end
+  it { expect ensure_length_of(:name).is_at_least(3) }
+  it { expect ensure_length_of(:name).is_at_most(240) }
+  it { expect ensure_length_of(:body).is_at_least(3) }
+  it { expect ensure_length_of(:body).is_at_most(4000) }
 
-  it 'is invalid without a status' do
-    resume = Resume.new(status: nil)
-    expect(resume.valid?).to be_falsey
-    expect(resume.errors[:status].size).to eq(1)
-  end
-
-  it { is_expected.to belong_to(:user).class_name('User') }
+  it { expect belong_to(:user).class_name('User') }
 
 end

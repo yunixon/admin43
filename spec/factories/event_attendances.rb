@@ -1,7 +1,8 @@
 FactoryGirl.define do
+
   factory :event_attendance do
-    user_id 1
-    event_id 1
+    association :user
+    association :event
   end
 
 end
