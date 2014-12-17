@@ -3,10 +3,14 @@
 FactoryGirl.define do
 
   factory :resume do
-    association :user, factory: :user
+    association :user, factory: :superadmin
     name 'Sysadmin resume'
     body 'My big Text'
-    status 'published'
+    status 'unpublished'
+
+    factory :invalid_resume do
+      name nil
+    end
   end
 
 end
