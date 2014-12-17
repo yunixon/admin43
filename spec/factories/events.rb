@@ -8,7 +8,7 @@ FactoryGirl.define do
     agenda 'Povestka'
     address 'Moskovskaya 4'
     logo 'url of logo'
-    #association :organizer, factory: :superadmin
+    association :organizer, factory: :superadmin
     status 'new'
 
     factory :invalid_event do

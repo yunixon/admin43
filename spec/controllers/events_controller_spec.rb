@@ -5,7 +5,6 @@ describe EventsController do
   login_superadmin
   let(:valid_attributes) { attributes_for(:event) }
   let(:invalid_attributes) { attributes_for(:invalid_event) }
-  #subject { create(:event, organizer_id: current_user) }
 
   describe 'GET #index' do
     it 'assigns all events as @events' do
