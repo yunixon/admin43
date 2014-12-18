@@ -12,12 +12,15 @@ FactoryGirl.define do
     end
 
     factory :superadmin do
+      name 'superadmin'
       role { :superadmin }
     end
     factory :sysadmin do
+      name 'sysadmin'
       role { :sysadmin }
     end
     factory :employer do
+      name 'employer'
       role { :employer }
     end
   end
