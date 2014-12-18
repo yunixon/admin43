@@ -1,4 +1,5 @@
 [![Build Status](https://api.travis-ci.org/yunixon/admin43.svg)](https://api.travis-ci.org/yunixon/admin43)
+[![Coverage Status](https://img.shields.io/coveralls/yunixon/admin43.svg)](https://coveralls.io/r/yunixon/admin43)
 
 ##Проект Admin43 - портал для системных администраторов и работодателей
 
