@@ -2,7 +2,7 @@ local: &local
   adapter: postgresql
   encoding: unicode
   pool: 5
-  username: action
+  username: postgres
   password:
   host: localhost
 

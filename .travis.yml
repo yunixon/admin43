@@ -1,8 +1,11 @@
 language: ruby
 rvm:
   - 2.1.2
+env:
+  - DB=postgresql
 script: 
   - bundle exec rake db:schema:load RAILS_ENV=test
   - bundle exec rspec
 before_script:
+  - cp config/database.yml.sample config/database.yml
   - psql -c 'create database admin43_test' -U postgres
