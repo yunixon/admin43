@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
 
   validates_format_of :email, without: TEMP_EMAIL_REGEX, on: :update
   validates :role, presence: true
-  # validates :name, length: {minimum: 3, maximum: 120}
+  validates :name, length: {minimum: 3, maximum: 120}
   validates :description, length: { maximum: 4000 }
 
   def normalize_friendly_id(input)

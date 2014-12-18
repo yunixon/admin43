@@ -33,7 +33,7 @@ feature 'Sign in with Facebook account' do
       fill_in 'Адрес электронной почты', with: 'john@doe.com'
       click_button 'Продолжить'
 
-      expect(page).to have_content 'Профиль успешно обновлен'
+      expect(page).to have_content 'Регистрация завершена'
     end
   end
 

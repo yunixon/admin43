@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   # before_filter :ensure_signup_complete, only: [:new, :create, :update, :destroy]
   before_action :authenticate_user!
 
+  layout 'login', only: :finish_signup
+
   def index
     @users = User.order(:created_at).page(params[:page])
   end
@@ -42,9 +44,9 @@ class UsersController < ApplicationController
       if @user.update(user_params)
         @user.skip_reconfirmation! # if @user.respond_to?(:skip_confirmation)
         sign_in(@user, bypass: true)
-        redirect_to @user, notice: 'Профиль успешно обновлен'
+        redirect_to @user, notice: 'Регистрация завершена'
       else
-        @show_errors = true
+        flash[:error] = 'Не верно задано значение'
       end
     end
   end
