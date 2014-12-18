@@ -1,3 +1,5 @@
+[![Build Status](https://api.travis-ci.org/yunixon/admin43.svg)](https://api.travis-ci.org/yunixon/admin43)
+
 ##Проект Admin43 - портал для системных администраторов и работодателей
 
 - **Production:** http://админ43.рф
