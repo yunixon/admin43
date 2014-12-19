@@ -18,6 +18,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @event.pictures.build
     respond_with(@event)
   end
 
@@ -91,6 +92,7 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:title, :start_date, :end_date, :location, :agenda,
-                                  :address, :logo, :organizer_id, :status)
+                                  :address, :logo, :organizer_id, :status,
+                                  pictures_attributes: [:id, :name, :_destroy])
   end
 end

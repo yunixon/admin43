@@ -1,4 +1,4 @@
-= simple_form_for(@event) do |f|
+= simple_form_for(@event, :html => { :multipart => true }) do |f|
   = f.error_notification
 
   .form-inputs
@@ -9,6 +9,9 @@
     = f.input :agenda, label: 'Повестка', placeholder: "Текст повестки события..."
     = f.input :address, label: 'Адрес', placeholder: "Киров, Московская 12"
     = f.input :logo, label: 'Логотип'
+    |Upload Image
+    = f.fields_for :pictures do |p|
+      = p.file_field :name, multiple: true
 
   .form-actions
     = f.button :submit, "Сохранить", class: 'btn btn-primary'
