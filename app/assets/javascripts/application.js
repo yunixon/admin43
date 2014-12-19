@@ -15,4 +15,5 @@
 //= require bootstrap-sprockets
 //= require jquery.infinitescroll
 //= require turbolinks
+//= require cocoon
 //= require_tree .
