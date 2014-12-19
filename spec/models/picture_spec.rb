@@ -6,4 +6,6 @@ describe Picture do
     expect(build(:picture)).to be_valid
   end
 
+  it { expect belong_to(:imageable) }
+
 end

@@ -24,6 +24,7 @@ describe Event do
 
   it { expect have_many(:event_attendances) }
   it { expect have_many(:users).through(:event_attendances) }
+  it { expect have_many(:pictures) }
 
   it { expect belong_to(:organizer).class_name('User') }
   
