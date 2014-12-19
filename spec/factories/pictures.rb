@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :picture do
-    name "MyString"
-    imageable_id 1
-    imageable_type "MyString"
+    name "My first picture"
+    association :imageable, factory: :event
+    imageable_type "Event"
   end
 end
