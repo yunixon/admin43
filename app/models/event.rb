@@ -17,7 +17,7 @@ class Event < ActiveRecord::Base
   has_many :event_attendances, dependent: :destroy
   has_many :users, through: :event_attendances, dependent: :destroy
   has_many :pictures, as: :imageable, dependent: :destroy
-  accepts_nested_attributes_for :pictures, allow_destroy: true
+  accepts_nested_attributes_for :pictures, reject_if: :all_blank, allow_destroy: true
 
   validates :title, :start_date, :end_date, :location, :agenda, :address, presence: true
   validates :title, :location, :address, length: { minimum: 3, maximum: 240 }
