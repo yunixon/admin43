@@ -16,7 +16,7 @@
       .col-md-10
         strong О себе:
         br
-        = @user.description
+        = @user.description.html_safe
   .panel-footer    
     - if can? :update, @user
       = link_to "Редактировать", edit_user_path(@user), class: 'btn btn-success'

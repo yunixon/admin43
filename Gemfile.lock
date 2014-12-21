@@ -77,9 +77,16 @@ GEM
       mime-types (>= 1.16)
     childprocess (0.5.5)
       ffi (~> 1.0, >= 1.0.11)
+    ckeditor (4.1.1)
+      cocaine
+      orm_adapter (~> 0.5.0)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
     cloudinary (1.0.76)
       aws_cf_signer
       rest-client
+    cocaine (0.5.5)
+      climate_control (>= 0.0.3, < 1.0)
     cocoon (1.2.6)
     coderay (1.1.0)
     coffee-rails (4.0.1)
@@ -333,6 +340,7 @@ DEPENDENCIES
   cancancan
   capybara (~> 2.4.3)
   carrierwave
+  ckeditor
   cloudinary
   cocoon
   coffee-rails (~> 4.0.0)

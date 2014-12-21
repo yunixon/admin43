@@ -43,6 +43,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-linkedin'
 gem 'font-awesome-rails'
 gem 'cocoon'
+gem 'ckeditor'
 
 group :prodaction do
   gem 'puma'

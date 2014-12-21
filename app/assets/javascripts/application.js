@@ -16,4 +16,5 @@
 //= require jquery.infinitescroll
 //= require turbolinks
 //= require cocoon
+//= require ckeditor/init
 //= require_tree .

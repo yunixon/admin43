@@ -8,7 +8,7 @@
       .form-inputs
         = f.input :name, required: true, autofocus: true, label: 'ФИО или название фирмы'
         = f.input :email, required: true, label: 'Адрес электронной почты'
-        = f.input :description, label: 'О себе'
+        = f.input :description, label: 'О себе', as: :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full'} }
       .form-actions
         center
           = f.button :submit, "Сохранить", class: 'btn btn-primary'

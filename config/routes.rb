@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
   devise_for :users, controllers: { omniauth_callbacks: 'callbacks' }
 
   resources :users
@@ -40,7 +41,7 @@ Rails.application.routes.draw do
   get :about, to: 'pages#about', as: 'about'
 
   match '/users/:id/finish_signup', to: 'users#finish_signup', via: [:get, :patch], as: :finish_signup
-
+  
   # get :add_newsline_element, to: 'newslines#add_newsline_element', as: 'add_newsline_element'
 
   # The priority is based upon order of creation: first created -> highest priority.
