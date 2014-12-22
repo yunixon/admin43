@@ -3,7 +3,7 @@
 
   .form-inputs
     = f.input :name, label: 'Должность', placeholder: 'Системный администратор Unix'
-    = f.input :body, label: 'Резюме', placeholder: 'текст резюме...'
+    = f.input :body, label: 'Резюме', placeholder: 'текст резюме...', as: :ckeditor, :input_html => { :ckeditor => {:toolbar => 'mini'} }
 
   .form-actions
     = f.button :submit, "Сохранить", class: 'btn btn-primary'

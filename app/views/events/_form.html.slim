@@ -6,7 +6,7 @@
     = f.input :start_date, label: 'Дата начала', placeholder: "12.02.15"
     = f.input :end_date, label: 'Дата окончания', placeholder: "12.02.15"
     = f.input :location, label: 'Место проведения', placeholder: "Коворкинг центр Вход"
-    = f.input :agenda, label: 'Повестка', placeholder: "Текст повестки события..."
+    = f.input :agenda, label: 'Повестка', placeholder: "Текст повестки события...", as: :ckeditor, :input_html => { :ckeditor => {:toolbar => 'mini'} }
     = f.input :address, label: 'Адрес', placeholder: "Киров, Московская 12"
     = f.input :logo, label: 'Логотип'
     h3

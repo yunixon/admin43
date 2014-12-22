@@ -8,7 +8,7 @@
         center
           = image_tag avatar_url(resume.user), alt: "#{resume.user.name}", title: "#{resume.user.name}", class: "img-circle img-thumbnail"
       .col-md-10
-        = resume.body
+        = resume.body.try(:html_safe)
   .panel-footer
     div class=("label #{label_class_for(resume.status)}")
       = resume.status

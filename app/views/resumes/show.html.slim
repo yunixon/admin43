@@ -11,7 +11,7 @@
           br
           b= @resume.user.email
       .col-md-10
-        = @resume.body
+        = @resume.body.try(:html_safe)
   .panel-footer
     div class=("label #{label_class_for(@resume.status)}")
       = @resume.status

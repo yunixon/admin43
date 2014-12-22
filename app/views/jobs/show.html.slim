@@ -10,7 +10,7 @@
           br
           b= @job.owner.name
       .col-md-10
-        = @job.body
+        = @job.body.try(:html_safe)
   .panel-footer
     div class=("label #{label_class_for(@job.status)}")
       = @job.status

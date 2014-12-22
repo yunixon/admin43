@@ -29,7 +29,7 @@
         br
         b Повестка:
         br
-        = @event.agenda
+        = @event.agenda.try(:html_safe)
     .row
       .col-md-12
         - @attendees.each do |a|

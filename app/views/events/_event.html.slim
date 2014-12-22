@@ -29,7 +29,7 @@
         br
         b Повестка:
         br
-        = event.agenda
+        = event.agenda.try(:html_safe)
   .panel-footer
     div class=("label #{label_class_for(event.status)}")
       = event.status

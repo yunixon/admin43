@@ -5,7 +5,7 @@
   .panel-body
     .row
       .col-md-12
-        = @newsline.body
+        = @newsline.body.try(:html_safe)
   .panel-footer
     div class=("label #{label_class_for(@newsline.status)}")
       = @newsline.status
