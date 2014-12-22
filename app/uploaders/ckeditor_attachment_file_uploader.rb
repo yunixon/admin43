@@ -1,11 +1,11 @@
 # encoding: utf-8
 class CkeditorAttachmentFileUploader < CarrierWave::Uploader::Base
   include Ckeditor::Backend::CarrierWave
-
+  # include Cloudinary::CarrierWave
   # Include RMagick or ImageScience support:
-  #include CarrierWave::RMagick
-  #include CarrierWave::MiniMagick
+  # include CarrierWave::RMagick
   include Cloudinary::CarrierWave
+  include CarrierWave::MiniMagick
   # include CarrierWave::ImageScience
 
   # Choose what kind of storage to use for this uploader:
@@ -13,10 +13,14 @@ class CkeditorAttachmentFileUploader < CarrierWave::Uploader::Base
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
-  def store_dir
-    "uploads/ckeditor/attachments/#{model.id}"
+  # def store_dir
+  #  "uploads/ckeditor/attachments/#{model.id}"
   #  "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
+  # end
+  
+  #def store_dir
+  #  "uploads/ckeditor/attachments/#{model.id}"
+  #end
 
   [:extract_content_type, :set_size, :read_dimensions].each do |method|
     define_method :"#{method}_with_cloudinary" do
@@ -24,7 +28,7 @@ class CkeditorAttachmentFileUploader < CarrierWave::Uploader::Base
       {}
     end
     alias_method_chain method, :cloudinary
-  end
+  end 
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
