@@ -44,6 +44,8 @@ gem 'omniauth-linkedin'
 gem 'font-awesome-rails'
 gem 'cocoon'
 gem 'ckeditor', github: 'galetahub/ckeditor'
+gem 'the_comments'
+gem 'awesome_nested_set'
 
 group :prodaction do
   gem 'puma'

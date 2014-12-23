@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141221180028) do
+ActiveRecord::Schema.define(version: 20141223084337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,34 @@ ActiveRecord::Schema.define(version: 20141221180028) do
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
+
+  create_table "comments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "holder_id"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.string   "commentable_url"
+    t.string   "commentable_title"
+    t.string   "commentable_state"
+    t.string   "anchor"
+    t.string   "title"
+    t.string   "contacts"
+    t.text     "raw_content"
+    t.text     "content"
+    t.string   "view_token"
+    t.string   "state",             default: "draft"
+    t.string   "ip",                default: "undefined"
+    t.string   "referer",           default: "undefined"
+    t.string   "user_agent",        default: "undefined"
+    t.integer  "tolerance_time"
+    t.boolean  "spam",              default: false
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.integer  "depth",             default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "event_attendances", force: true do |t|
     t.integer  "user_id"
@@ -52,6 +80,9 @@ ActiveRecord::Schema.define(version: 20141221180028) do
     t.datetime "updated_at"
     t.string   "slug"
     t.string   "status"
+    t.integer  "draft_comments_count",     default: 0
+    t.integer  "published_comments_count", default: 0
+    t.integer  "deleted_comments_count",   default: 0
   end
 
   add_index "events", ["slug"], name: "index_events_on_slug", unique: true, using: :btree
@@ -87,6 +118,9 @@ ActiveRecord::Schema.define(version: 20141221180028) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+    t.integer  "draft_comments_count",     default: 0
+    t.integer  "published_comments_count", default: 0
+    t.integer  "deleted_comments_count",   default: 0
   end
 
   add_index "jobs", ["slug"], name: "index_jobs_on_slug", unique: true, using: :btree
@@ -106,6 +140,9 @@ ActiveRecord::Schema.define(version: 20141221180028) do
     t.text     "body"
     t.string   "status"
     t.string   "slug"
+    t.integer  "draft_comments_count",     default: 0
+    t.integer  "published_comments_count", default: 0
+    t.integer  "deleted_comments_count",   default: 0
   end
 
   add_index "newslines", ["slug"], name: "index_newslines_on_slug", unique: true, using: :btree
@@ -126,17 +163,20 @@ ActiveRecord::Schema.define(version: 20141221180028) do
     t.datetime "updated_at"
     t.string   "slug"
     t.string   "name"
+    t.integer  "draft_comments_count",     default: 0
+    t.integer  "published_comments_count", default: 0
+    t.integer  "deleted_comments_count",   default: 0
   end
 
   add_index "resumes", ["slug"], name: "index_resumes_on_slug", unique: true, using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                       default: "", null: false
+    t.string   "encrypted_password",          default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",               default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -152,6 +192,16 @@ ActiveRecord::Schema.define(version: 20141221180028) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.integer  "my_draft_comments_count",     default: 0
+    t.integer  "my_published_comments_count", default: 0
+    t.integer  "my_comments_count",           default: 0
+    t.integer  "draft_comcoms_count",         default: 0
+    t.integer  "published_comcoms_count",     default: 0
+    t.integer  "deleted_comcoms_count",       default: 0
+    t.integer  "spam_comcoms_count",          default: 0
+    t.integer  "draft_comments_count",        default: 0
+    t.integer  "published_comments_count",    default: 0
+    t.integer  "deleted_comments_count",      default: 0
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
