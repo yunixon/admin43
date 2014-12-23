@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  # layout 'admin'
+  layout 'admin'
 
   # Define your restrict methods and use them like this:
   #

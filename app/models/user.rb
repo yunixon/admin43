@@ -84,4 +84,12 @@ class User < ActiveRecord::Base
   def email_verified?
     email && email !~ TEMP_EMAIL_REGEX
   end
+
+  def comments_admin?
+    self.superadmin?
+  end
+
+  def comments_moderator? comment
+    id == comment.holder_id
+  end
 end

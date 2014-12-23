@@ -6,7 +6,7 @@ class Newsline < ActiveRecord::Base
   friendly_id :name, use: [:slugged, :finders]
 
   before_create :set_status
-  before_update :set_status
+  #before_update :set_status
 
   paginates_per 10
 
