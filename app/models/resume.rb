@@ -1,6 +1,7 @@
 require 'babosa'
 
 class Resume < ActiveRecord::Base
+  include TheComments::Commentable
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
 

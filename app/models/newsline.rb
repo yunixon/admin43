@@ -1,6 +1,7 @@
 require 'babosa'
 
 class Newsline < ActiveRecord::Base
+  include TheComments::Commentable
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
 
@@ -36,6 +37,18 @@ class Newsline < ActiveRecord::Base
 
   def normalize_friendly_id(input)
     input.to_s.to_slug.normalize(transliterations: :russian).to_s
+  end
+
+  def commentable_title
+    try(:title) || 'Загаловок не задан'
+  end
+
+  def commentable_url
+    ['', self.class.to_s.tableize, id].join('/')
+  end
+
+  def commentable_state
+    try(:state) || 'published'
   end
 
   private

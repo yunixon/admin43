@@ -14,3 +14,5 @@
       = link_to 'Опубликовать', publicate_newsline_path(@newsline), class: 'btn btn-success' if @newsline.unpublished?
       = link_to "Удалить", newsline_path(@newsline), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger'
 = link_to 'Назад', :back, class: 'btn btn-primary'
+
+= render partial: 'the_comments/tree', locals: { commentable: @newsline, comments_tree: @comments }

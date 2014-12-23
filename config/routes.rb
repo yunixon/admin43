@@ -41,6 +41,11 @@ Rails.application.routes.draw do
   get :about, to: 'pages#about', as: 'about'
 
   match '/users/:id/finish_signup', to: 'users#finish_signup', via: [:get, :patch], as: :finish_signup
+
+  # TheComments routes
+  concern   :user_comments,  TheComments::UserRoutes.new
+  concern   :admin_comments, TheComments::AdminRoutes.new
+  resources :comments, concerns:  [:user_comments, :admin_comments]
   
   # get :add_newsline_element, to: 'newslines#add_newsline_element', as: 'add_newsline_element'
 

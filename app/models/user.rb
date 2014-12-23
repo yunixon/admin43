@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
 
+  include TheComments::User
+  include TheComments::Commentable
+
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
 

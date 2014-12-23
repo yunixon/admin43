@@ -2,6 +2,7 @@ require 'babosa'
 require 'carrierwave/orm/activerecord'
 
 class Event < ActiveRecord::Base
+  include TheComments::Commentable
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]
 

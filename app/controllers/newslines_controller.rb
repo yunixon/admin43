@@ -11,6 +11,7 @@ class NewslinesController < ApplicationController
   end
 
   def show
+    @comments = @newsline.comments.with_state([:draft, :published])
     respond_with(@newsline)
   end
 
