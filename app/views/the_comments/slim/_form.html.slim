@@ -3,10 +3,10 @@ h3
 
 = simple_form_for Comment.new, remote: true, authenticity_token: true do |f|
   .error_notifier style='display:none'
-  p= f.input :title, label: t('the_comments.form.title') unless current_user
-  p= f.input :contacts, label: t('the_comments.form.contacts') unless current_user
-  p= f.input :title, as: :hidden, input_html: { value: current_user.name } if current_user
-  p= f.input :contacts, as: :hidden, input_html: { value: current_user.email } if current_user
+  p= f.input :title, label: t('the_comments.form.title') unless user_signed_in?
+  p= f.input :contacts, label: t('the_comments.form.contacts') unless user_signed_in?
+  p= f.input :title, as: :hidden, input_html: { value: current_user.name } if user_signed_in?
+  p= f.input :contacts, as: :hidden, input_html: { value: current_user.email } if user_signed_in?
   p= f.input :raw_content, label: t('the_comments.form.content')
 
   p.trap
