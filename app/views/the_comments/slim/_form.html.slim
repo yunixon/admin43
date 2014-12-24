@@ -1,16 +1,13 @@
 h3
   = link_to t('the_comments.new'), '#', id: :new_root_comment
 
-= form_for Comment.new, remote: true, authenticity_token: true do |f|
-  .error_notifier style="display:none"  
-  label= t('the_comments.form.title')
-  p= f.text_field :title
-
-  label= t('the_comments.form.contacts')
-  p= f.text_field :contacts
-
-  label= t('the_comments.form.content')
-  p= f.text_area :raw_content
+= simple_form_for Comment.new, remote: true, authenticity_token: true do |f|
+  .error_notifier style='display:none'
+  p= f.input :title, label: t('the_comments.form.title') unless current_user
+  p= f.input :contacts, label: t('the_comments.form.contacts') unless current_user
+  p= f.input :title, as: :hidden, input_html: { value: current_user.name } if current_user
+  p= f.input :contacts, as: :hidden, input_html: { value: current_user.email } if current_user
+  p= f.input :raw_content, label: t('the_comments.form.content')
 
   p.trap
     - TheComments.config.empty_inputs.each do |name|
@@ -22,6 +19,5 @@ h3
   = f.hidden_field :commentable_id,   value: commentable.id
   = f.hidden_field :parent_id, class: :parent_id
 
-  p
-    = f.submit t('the_comments.form.create'), class: :btn
-    = t('the_comments.form.thank_you')
+  p= f.submit t('the_comments.form.create'), class: 'btn btn-success'
+    //= t('the_comments.form.thank_you')

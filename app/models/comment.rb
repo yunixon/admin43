@@ -17,8 +17,6 @@ class Comment < ActiveRecord::Base
     src = contacts if !contacts.blank? && /@/ =~ contacts
     hash = Digest::MD5.hexdigest(src)
     "https://2.gravatar.com/avatar/#{hash}?s=42&d=https://identicons.github.com/#{hash}.png"
-    #gravatar_id = Digest::MD5.hexdigest(self.user.email).downcase
-    #"http://gravatar.com/avatar/#{gravatar_id}.png"
   end
   # ---------------------------------------------------
 
