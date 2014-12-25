@@ -15,10 +15,10 @@
     div class=("label #{label_class_for(job.status)}")
       = job.status
     - if can? :update, job
-      = link_to "Редактировать", edit_job_path(job), class: 'btn btn-success'
-      = link_to 'Опубликовать', to_moderate_job_path(job), class: 'btn btn-success' if job.new?
-      = link_to 'Выполнено', complete_job_path(job), class: 'btn btn-success' if job.accepted?
-      = link_to "Удалить", job_path(job), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger'
+      = link_to "Редактировать", edit_job_path(job), class: 'btn btn-success btn-inline'
+      = link_to 'Опубликовать', to_moderate_job_path(job), class: 'btn btn-success btn-inline' if job.new?
+      = link_to 'Выполнено', complete_job_path(job), class: 'btn btn-success btn-inline' if job.accepted?
+      = link_to "Удалить", job_path(job), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger btn-inline'
       - if current_user.superadmin?
-          = link_to 'Принять', accept_job_path(job), class: 'btn btn-success' if job.moderating?
-          = link_to 'Отклонить', reject_job_path(job), class: 'btn btn-danger' if job.moderating?
+          = link_to 'Принять', accept_job_path(job), class: 'btn btn-success btn-inline' if job.moderating?
+          = link_to 'Отклонить', reject_job_path(job), class: 'btn btn-danger btn-inline' if job.moderating?

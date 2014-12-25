@@ -37,15 +37,15 @@
   .panel-footer
     div class=("label #{label_class_for(@event.status)}")
       = @event.status
-    = link_to "Я пойду", join_events_path(event_id: @event.id), class: 'btn btn-primary'
+    = link_to "Я пойду", join_events_path(event_id: @event.id), class: 'btn btn-primary btn-inline'
     - if can? :update, @event
-      = link_to "Редактировать", edit_event_path(@event), class: 'btn btn-success'
-      = link_to "Удалить", event_path(@event), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger'
-      = link_to 'Опубликовать', to_moderate_event_path(@event), class: 'btn btn-success' if @event.new?
-      = link_to 'Переписать', rewrite_event_path(@event), class: 'btn btn-success' if @event.rejected?
+      = link_to "Редактировать", edit_event_path(@event), class: 'btn btn-success btn-inline'
+      = link_to "Удалить", event_path(@event), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger btn-inline'
+      = link_to 'Опубликовать', to_moderate_event_path(@event), class: 'btn btn-success btn-inline' if @event.new?
+      = link_to 'Переписать', rewrite_event_path(@event), class: 'btn btn-success btn-inline' if @event.rejected?
       - if current_user.superadmin?
-        = link_to 'Принять', accept_event_path(@event), class: 'btn btn-success' if @event.moderating?
-        = link_to 'Отклонить', reject_event_path(@event), class: 'btn btn-danger' if @event.moderating?
+        = link_to 'Принять', accept_event_path(@event), class: 'btn btn-success btn-inline' if @event.moderating?
+        = link_to 'Отклонить', reject_event_path(@event), class: 'btn btn-danger btn-inline' if @event.moderating?
     - @event.pictures.each do |p|
       = link_to image_tag(p.name.url(:mini_thumbnail), alt: "#{p.name}", title: "#{p.name}", class: "img-thumbnail"), p.name.url
 

@@ -13,6 +13,7 @@ class EventsController < ApplicationController
 
   def show
     @attendees = EventAttendance.where(event_id: @event.id)
+    @comments = @event.comments.with_state([:draft, :published])
     respond_with(@event)
   end
 

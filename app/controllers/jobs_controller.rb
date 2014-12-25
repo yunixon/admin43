@@ -12,6 +12,7 @@ class JobsController < ApplicationController
   end
 
   def show
+    @comments = @job.comments.with_state([:draft, :published])
     respond_with(@job)
   end
 

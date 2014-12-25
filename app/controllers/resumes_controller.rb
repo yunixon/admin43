@@ -11,6 +11,7 @@ class ResumesController < ApplicationController
   end
 
   def show
+    @comments = @resume.comments.with_state([:draft, :published])
     respond_with(@resume)
   end
 

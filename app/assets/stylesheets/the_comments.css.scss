@@ -62,7 +62,7 @@
       font-size: 13px;
       height: 150px;
       padding: 4px;
-      width: 75%;
+      //width: 75%;
     }
     .trap{
       margin: 0; padding: 0;
@@ -80,7 +80,7 @@
   }
 
   li{
-    .comment.draft{
+    .comment{
       border: 1px solid gray;
       background: #eff5f3;
       padding: 10px;
@@ -119,7 +119,7 @@
       padding-left: 7px;
     }
     &.draft{
-      .userbar{ background: #ffa768; }
+      .userbar{ background: #33a768; }
       .to_draft{ display: none; }
     }
     &.published{

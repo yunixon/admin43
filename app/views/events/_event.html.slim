@@ -33,12 +33,12 @@
   .panel-footer
     div class=("label #{label_class_for(event.status)}")
       = event.status
-    = link_to "Я пойду", join_events_path(event_id: event.id), class: 'btn btn-primary'
+    = link_to "Я пойду", join_events_path(event_id: event.id), class: 'btn btn-primary btn-inline'
     = link_to " Присоединилось (" + event.joined.to_s + ")", event_path(event)
     - if can? :update, event
-      = link_to "Редактировать", edit_event_path(event), class: 'btn btn-success'
-      = link_to 'Опубликовать', to_moderate_event_path(event), class: 'btn btn-success' if event.new?
-      = link_to "Удалить", event_path(event), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger'
+      = link_to "Редактировать", edit_event_path(event), class: 'btn btn-success btn-inline'
+      = link_to 'Опубликовать', to_moderate_event_path(event), class: 'btn btn-success btn-inline' if event.new?
+      = link_to "Удалить", event_path(event), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger btn-inline'
       - if current_user.superadmin?
-          = link_to 'Принять', accept_event_path(event), class: 'btn btn-success' if event.moderating?
-          = link_to 'Отклонить', reject_event_path(event), class: 'btn btn-danger' if event.moderating?
+          = link_to 'Принять', accept_event_path(event), class: 'btn btn-success btn-inline' if event.moderating?
+          = link_to 'Отклонить', reject_event_path(event), class: 'btn btn-danger btn-inline' if event.moderating?

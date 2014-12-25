@@ -19,10 +19,10 @@
         = @user.description.try(:html_safe)
   .panel-footer    
     - if can? :update, @user
-      = link_to "Редактировать", edit_user_path(@user), class: 'btn btn-success'
-      = link_to "Добавить резюме", new_resume_path, class: 'btn btn-success' if @user.sysadmin?
-      = link_to 'Добавить событие', new_event_path, class: 'btn btn-success'
-      = link_to "Добавить задание", new_job_path, class: 'btn btn-success' if @user.employer?
+      = link_to "Редактировать", edit_user_path(@user), class: 'btn btn-success btn-inline'
+      = link_to "Добавить резюме", new_resume_path, class: 'btn btn-success btn-inline' if @user.sysadmin?
+      = link_to 'Добавить событие', new_event_path, class: 'btn btn-success btn-inline'
+      = link_to "Добавить задание", new_job_path, class: 'btn btn-success btn-inline' if @user.employer?
 .row
   .col-md-6
     .panel.panel-primary.element

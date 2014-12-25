@@ -10,8 +10,8 @@
     div class=("label #{label_class_for(@newsline.status)}")
       = @newsline.status
     - if can? :update, @newsline
-      = link_to "Редактировать", edit_newsline_path(@newsline), class: 'btn btn-success'
-      = link_to 'Опубликовать', publicate_newsline_path(@newsline), class: 'btn btn-success' if @newsline.unpublished?
-      = link_to "Удалить", newsline_path(@newsline), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger'
+      = link_to "Редактировать", edit_newsline_path(@newsline), class: 'btn btn-success btn-inline'
+      = link_to 'Опубликовать', publicate_newsline_path(@newsline), class: 'btn btn-success btn-inline' if @newsline.unpublished?
+      = link_to "Удалить", newsline_path(@newsline), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger btn-inline'
 = link_to 'Назад', :back, class: 'btn btn-primary'
 p= render partial: 'the_comments/tree', locals: { commentable: @newsline, comments_tree: @comments }

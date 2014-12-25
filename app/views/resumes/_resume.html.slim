@@ -13,5 +13,5 @@
     div class=("label #{label_class_for(resume.status)}")
       = resume.status
     - if can? :update, resume
-      = link_to "Редактировать", edit_resume_path(resume), class: 'btn btn-success'
-      = link_to "Удалить", resume_path(resume), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger'
+      = link_to "Редактировать", edit_resume_path(resume), class: 'btn btn-success btn-inline'
+      = link_to "Удалить", resume_path(resume), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger btn-inline'
