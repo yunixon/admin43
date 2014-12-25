@@ -50,3 +50,4 @@
       = link_to image_tag(p.name.url(:mini_thumbnail), alt: "#{p.name}", title: "#{p.name}", class: "img-thumbnail"), p.name.url
 
 = link_to 'Назад', :back, class: 'btn btn-primary'
+p= render partial: 'the_comments/tree', locals: { commentable: @event, comments_tree: @comments }

@@ -20,3 +20,4 @@
       = link_to 'Опубликовать', publicate_resume_path(@resume), class: 'btn btn-success' if @resume.unpublished?
       = link_to "Удалить", resume_path(@resume), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger'
 = link_to 'Назад', :back, class: 'btn btn-primary'
+p= render partial: 'the_comments/tree', locals: { commentable: @resume, comments_tree: @comments }

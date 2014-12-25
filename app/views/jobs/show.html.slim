@@ -24,3 +24,4 @@
           = link_to 'Отклонить', reject_job_path(@job), class: 'btn btn-danger' if @job.moderating?
 
 = link_to 'Назад', :back, class: 'btn btn-primary'
+p= render partial: 'the_comments/tree', locals: { commentable: @job, comments_tree: @comments }

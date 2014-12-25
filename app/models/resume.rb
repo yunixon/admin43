@@ -6,7 +6,7 @@ class Resume < ActiveRecord::Base
   friendly_id :name, use: [:slugged, :finders]
 
   before_create :set_status
-  before_update :set_status
+  #before_update :set_status
 
   paginates_per 10
 
@@ -35,6 +35,18 @@ class Resume < ActiveRecord::Base
 
   def normalize_friendly_id(input)
     input.to_s.to_slug.normalize(transliterations: :russian).to_s
+  end
+
+  def commentable_title
+    try(:name) || 'Загаловок не задан'
+  end
+
+  def commentable_url
+    ['', self.class.to_s.tableize, id].join('/')
+  end
+
+  def commentable_state
+    try(:status) || 'published'
   end
 
   private

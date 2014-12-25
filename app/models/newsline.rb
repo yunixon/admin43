@@ -35,7 +35,7 @@ class Newsline < ActiveRecord::Base
   end
 
   def commentable_title
-    try(:title) || 'Загаловок не задан'
+    try(:name) || 'Загаловок не задан'
   end
 
   def commentable_url
@@ -43,7 +43,7 @@ class Newsline < ActiveRecord::Base
   end
 
   def commentable_state
-    try(:state) || 'published'
+    try(:status) || 'published'
   end
 
   private

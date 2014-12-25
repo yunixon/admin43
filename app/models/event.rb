@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
   friendly_id :title, use: [:slugged, :finders]
 
   before_create :set_status
-  before_update :set_status
+  #before_update :set_status
 
   mount_uploader :logo, ImageUploader
 
@@ -57,6 +57,18 @@ class Event < ActiveRecord::Base
 
   def joined
     event_attendances.count
+  end
+
+  def commentable_title
+    try(:title) || 'Загаловок не задан'
+  end
+
+  def commentable_url
+    ['', self.class.to_s.tableize, id].join('/')
+  end
+
+  def commentable_state
+    try(:status) || 'published'
   end
 
   private
