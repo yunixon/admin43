@@ -4,7 +4,7 @@ $ ->
   comments = $ '.comments'
 
   # CONTROLS
-  comments.on 'click', 'a.additional_info', ->
+  comments.on 'click', 'a.additional_info_btn', ->
     btn    = $ @
     holder = btn.parents('.panel-body')
     holder.find('div.additional_info').slideToggle()

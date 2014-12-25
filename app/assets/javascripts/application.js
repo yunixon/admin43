@@ -18,5 +18,4 @@
 //= require cocoon
 //= require ckeditor/init
 //= require the_comments
-//= require the_comments_manage
 //= require_tree .

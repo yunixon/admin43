@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require the_comments
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -19,12 +20,4 @@
 .btn {
   margin-left: 5px;
   margin-top: 5px;
-}
-
-.edit_form {
-  display: none;
-}
-
-div.additional_info {
-  display: none;
 }
