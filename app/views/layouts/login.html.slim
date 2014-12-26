@@ -8,8 +8,9 @@ html
   body
 
     .container
-      .col-md-4.col-md-offset-4
-        .panel.panel-default.login
-          .panel-body
-            = render 'layouts/messages'
-            = yield
+      .row
+        .col-md-4.col-md-offset-4
+          .panel.panel-default.login
+            .panel-body
+              = render 'layouts/messages'
+              = yield
