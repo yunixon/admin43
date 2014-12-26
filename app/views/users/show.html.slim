@@ -10,7 +10,7 @@
           p
             strong= @user.email
           - @user.identities.each do |i|
-            div class=("btn btn-social-icon btn-#{i.provider}")
+            div class=("btn btn-social-icon btn-#{i.provider} btn-inline")
               div class=("i fa fa-#{i.provider}")
 
       .col-md-10
@@ -30,10 +30,11 @@
         h3.panel-title
           |Мои события
       .panel-body
-        - @user.organized_events.each do |event|
-          = link_to event.title, event_path(event)
-          |(#{event.status})
-          br
+        = link_to 'Добавить событие', new_event_path, class: 'btn btn-primary'
+        ul.list-group
+          - @user.organized_events.each do |event|
+            li.list-group-item= link_to event.title, event_path(event)
+          //  = event.status
   - if @user.sysadmin?
     .col-md-6
       .panel.panel-primary.element
@@ -41,10 +42,11 @@
           h3.panel-title
             |Мои резюме
         .panel-body
-          - @user.resumes.each do |resume|
-            = link_to resume.name, resume_path(resume)
-            |(#{resume.status})
-            br
+          = link_to 'Добавить резюме', new_resume_path, class: 'btn btn-primary'
+          ul.list-group
+            - @user.resumes.each do |resume|
+              li.list-group-item= link_to resume.name, resume_path(resume)
+              //  = resume.status
   - else
     .col-md-6
       .panel.panel-primary.element
@@ -52,9 +54,10 @@
           h3.panel-title
             |Мои задания
         .panel-body
-          - @user.jobs.each do |job|
-            = link_to job.name, job_path(job)
-            |(#{job.status})
-            br
+          = link_to 'Добавить задание', new_job_path, class: 'btn btn-primary'
+          ul.list-group
+            - @user.jobs.each do |job|
+              li.list-group-item= link_to job.name, job_path(job)
+              //  = job.status
 
 = link_to 'Назад', :back, class: 'btn btn-primary'
