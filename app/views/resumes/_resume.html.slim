@@ -15,3 +15,7 @@
     - if can? :update, resume
       = link_to "Редактировать", edit_resume_path(resume), class: 'btn btn-success btn-inline'
       = link_to "Удалить", resume_path(resume), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger btn-inline'
+    = link_to resume_path(resume), class: 'btn btn-success btn-inline' do
+      |Комментариев 
+      span.badge
+        = resume.published_comments_count.to_s

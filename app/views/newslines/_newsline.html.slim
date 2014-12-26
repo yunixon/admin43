@@ -12,3 +12,7 @@
     - if can? :update, newsline
       = link_to "Редактировать", edit_newsline_path(newsline), class: 'btn btn-success btn-inline'
       = link_to "Удалить", newsline_path(newsline), method: :delete, data: {confirm: 'Вы уверены?'}, class: 'btn btn-danger btn-inline'
+    = link_to newsline_path(newsline), class: 'btn btn-success btn-inline' do
+      |Комментариев 
+      span.badge
+        = newsline.published_comments_count.to_s

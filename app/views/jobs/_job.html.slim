@@ -22,3 +22,7 @@
       - if current_user.superadmin?
           = link_to 'Принять', accept_job_path(job), class: 'btn btn-success btn-inline' if job.moderating?
           = link_to 'Отклонить', reject_job_path(job), class: 'btn btn-danger btn-inline' if job.moderating?
+    = link_to job_path(job), class: 'btn btn-success btn-inline' do
+      |Комментариев 
+      span.badge
+        = job.published_comments_count.to_s
