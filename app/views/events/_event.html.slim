@@ -4,29 +4,28 @@
       = link_to event.title, event_path(event)
   .panel-body
     .row
-      .col-md-2
+      .col-md-3
         center
           = image_tag avatar_url(event.owner), alt: "#{event.owner.name}", title: "#{event.owner.name}", class: "img-circle img-thumbnail"
+          br
           b= event.owner.name
-      .col-md-2
+        br
         b Начало проведения:
         br
-        = event.start_date
-      .col-md-2
+        = l event.start_date, format: :short
+        br
         b Конец:
         br
-        = event.end_date     
-      .col-md-2
+        = l event.end_date, format: :short 
+        br
         b Место проведения:
         br
-        = event.location      
-      .col-md-2
+        = event.location
+        br
         b Адрес:
         br
         = event.address
-    .row
-      .col-md-12
-        br
+      .col-md-9
         b Повестка:
         br
         = event.agenda.try(:html_safe)

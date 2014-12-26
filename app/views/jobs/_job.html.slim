@@ -4,12 +4,12 @@
       = link_to job.name, job_path(job)
   .panel-body
     .row
-      .col-md-2
+      .col-md-3
         center
           = image_tag avatar_url(job.owner), class: "img-circle img-thumbnail"
           br
           b= job.owner.name
-      .col-md-10
+      .col-md-9
         = job.body.try(:html_safe)
   .panel-footer
     div class=("label #{label_class_for(job.status)}")

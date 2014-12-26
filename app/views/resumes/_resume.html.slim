@@ -4,10 +4,10 @@
       = link_to resume.user.name + " - " + resume.name, resume_path(resume)
   .panel-body
     .row
-      .col-md-2
+      .col-md-3
         center
           = image_tag avatar_url(resume.user), alt: "#{resume.user.name}", title: "#{resume.user.name}", class: "img-circle img-thumbnail"
-      .col-md-10
+      .col-md-9
         = resume.body.try(:html_safe)
   .panel-footer
     div class=("label #{label_class_for(resume.status)}")
