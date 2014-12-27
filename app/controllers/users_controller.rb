@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :finish_signup]
   # before_filter :ensure_signup_complete, only: [:new, :create, :update, :destroy]
   before_action :authenticate_user!
+  before_action :admin_user, only: [:index]
 
   layout 'login', only: :finish_signup
 
@@ -55,6 +56,10 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.friendly.find(params[:id])
+  end
+
+  def admin_user
+    redirect_to(root_url) unless current_user.superadmin?
   end
 
   def user_params

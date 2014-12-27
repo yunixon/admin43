@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :admin_user, only: [:index, :manage]
+  
   layout 'admin'
 
   # Define your restrict methods and use them like this:
@@ -41,4 +43,11 @@ class CommentsController < ApplicationController
   # %w[ draft published deleted spam ]
   # %w[ my_comments my_draft my_published ]
   # %w[ total_draft total_published total_deleted total_spam ]
+
+  private
+
+  def admin_user
+    redirect_to(root_url) unless user_signed_in? && current_user.superadmin?
+  end
+
 end
